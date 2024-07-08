@@ -77,7 +77,7 @@ public class MainTest {
 		testAcc1.withdraw(0);
 		System.out.println("Withdraw Balance: "+ testAcc1.getBalance());
 		testAcc1.withdraw(-100);
-		//System.out.println("Withdraw Balance: "+ testAcc1.getBalance());
+		System.out.println("Withdraw Balance: "+ testAcc1.getBalance());
 		
 		// test charge all accounts
 		testCust.chargeAllAccounts(100);
