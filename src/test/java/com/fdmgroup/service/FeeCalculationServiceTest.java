@@ -34,13 +34,13 @@ public class FeeCalculationServiceTest {
 		// Arrange
 		testBalance = 100d;
 		testAccount.correctBalance(testBalance);
-		double expectedResult = 20d;
+		double expectedFee = 20d;
 		
 		// Act
-		double actualResult = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
+		double actualFee = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
 		
 		// Assert
-		assertEquals(expectedResult, actualResult);
+		assertEquals(expectedFee, actualFee);
 	}
 	
 	@Test
@@ -48,13 +48,13 @@ public class FeeCalculationServiceTest {
 		// Arrange
 		testBalance = 500d;
 		testAccount.correctBalance(testBalance);
-		double expectedResult = 15d;
+		double expectedFee = 15d;
 		
 		// Act
-		double actualResult = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
+		double actualFee = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
 		
 		// Assert
-		assertEquals(expectedResult, actualResult);
+		assertEquals(expectedFee, actualFee);
 	}
 	
 	@Test
@@ -62,13 +62,13 @@ public class FeeCalculationServiceTest {
 		// Arrange
 		testBalance = 1_000d;
 		testAccount.correctBalance(testBalance);
-		double expectedResult = 10d;
+		double expectedFee = 10d;
 		
 		// Act
-		double actualResult = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
+		double actualFee = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
 		
 		// Assert
-		assertEquals(expectedResult, actualResult);
+		assertEquals(expectedFee, actualFee);
 		//assertEquals(testAccount.getBalance(), testBalance);
 	}
 	
@@ -78,13 +78,13 @@ public class FeeCalculationServiceTest {
 		testBalance = 2_000d;
 		testAccount.correctBalance(testBalance);
 		
-		double expectedResult = 5d;
+		double expectedFee = 5d;
 		
 		// Act
-		double actualResult = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
+		double actualFee = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
 		
 		// Assert
-		assertEquals(expectedResult, actualResult);
+		assertEquals(expectedFee, actualFee);
 	}
 	
 	@Test
@@ -93,13 +93,13 @@ public class FeeCalculationServiceTest {
 		testBalance = 2_001d;
 		testAccount.correctBalance(testBalance);
 		
-		double expectedResult = 0d;
+		double expectedFee = 0d;
 		
 		// Act
-		double actualResult = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
+		double actualFee = feeCalculationServiceTest.calculateFee(testAccount.getBalance());
 		
 		// Assert
-		assertEquals(expectedResult, actualResult);
+		assertEquals(expectedFee, actualFee);
 	}
 	
 }
