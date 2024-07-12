@@ -10,6 +10,7 @@ public class FeeCalculationServiceImpl implements FeeCalculationService {
 	/*---------------------------------------------------------------------------------------------------------------*/
 	/*Implemented Methods*/
 	/*---------------------------------------------------------------------------------------------------------------*/
+	@Override
 	public double calculateFee(double balance) {
 		if(balance > 2_000)
 			accountBalanceFee = 0d;
