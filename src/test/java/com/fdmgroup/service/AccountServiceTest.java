@@ -10,13 +10,15 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import com.fdmgroup.DAO.AccountReaderDAO;
 import com.fdmgroup.DAO.AccountWriterDAO;
 import com.fdmgroup.model.Account;
+import com.fdmgroup.model.SavingsAccount;
 
 public class AccountServiceTest {
+	
+	private Account account;
 	
 	private AccountReaderDAO mockAccountReaderDAO;
 	private AccountWriterDAO mockAccountWriterDAO;
@@ -25,13 +27,16 @@ public class AccountServiceTest {
 	
 	@BeforeEach
 	public void setUp() {
+		account = new SavingsAccount();
+		
 		mockAccountReaderDAO = mock(AccountReaderDAO.class);
 		mockAccountWriterDAO = mock(AccountWriterDAO.class);
+		
 		accountServiceTestAccountService = new AccountServiceImpl(mockAccountReaderDAO, mockAccountWriterDAO);
 	}
 	
 	@Test
-	public void test1() {
+	public void testWhenAccountServiceImpl_callsGetAccounts_andReturnsListofAccounts_fromAccountReaderDAO() {
 		// Arrange
 		List<Account> expectedAccountList = new ArrayList<>();
 		
@@ -44,6 +49,14 @@ public class AccountServiceTest {
 		// Assert
 		verify(mockAccountReaderDAO).readAccounts();
 		assertSame(expectedAccountList, actualAccountList);
+	}
+	
+	@Test
+	public void testWhenAccountServiceImpl_callsRemoveAccount_accountWriterDAO_deleteAccount_passingInAction() {
+		// Act
+		accountServiceTestAccountService.removeAccount(account);
 		
+		// Assert
+		verify(mockAccountWriterDAO).deleteAccount(account);
 	}
 }

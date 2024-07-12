@@ -29,8 +29,7 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void removeAccount(Account account) {
-		// TODO Auto-generated method stub
-		
+		accountWriterDAO.deleteAccount(account);
 	}
 
 	@Override
