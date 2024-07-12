@@ -52,11 +52,25 @@ public class AccountServiceTest {
 	}
 	
 	@Test
-	public void testWhenAccountServiceImpl_callsRemoveAccount_accountWriterDAO_deleteAccount_passingInAction() {
+	public void testWhenAccountServiceImpl_callsRemoveAccount_accountWriterDAO_passingInAction() {
 		// Act
 		accountServiceTestAccountService.removeAccount(account);
 		
 		// Assert
 		verify(mockAccountWriterDAO).deleteAccount(account);
+	}
+	
+	@Test
+	public void testWhenAccountServiceImpl_callsCreateAccount_andPassesAccountObject_intoAccountWriterDAO() {
+		// Arrange
+		Account expectedAccount = account;
+		
+		// Stubbing
+		when(mockAccountWriterDAO.createAccount(expectedAccount)).thenReturn(expectedAccount);
+		
+		// Act
+		Account actualAccount = accountServiceTestAccountService.createAccount(expectedAccount);
+		
+		// Assert
 	}
 }
