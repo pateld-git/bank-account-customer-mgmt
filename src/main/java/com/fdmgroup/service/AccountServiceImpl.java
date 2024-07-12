@@ -24,8 +24,7 @@ public class AccountServiceImpl implements AccountService{
 	/*---------------------------------------------------------------------------------------------------------------*/
 	@Override
 	public List<Account> getAccounts() {
-		// TODO Auto-generated method stub
-		return null;
+		return accountReaderDAO.readAccounts();
 	}
 
 	@Override
