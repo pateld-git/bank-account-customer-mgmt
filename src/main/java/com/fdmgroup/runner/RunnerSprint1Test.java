@@ -8,7 +8,7 @@ import com.fdmgroup.model.Customer;
 import com.fdmgroup.model.Person;
 import com.fdmgroup.model.SavingsAccount;
 
-public class MainTest {
+public class RunnerSprint1Test {
 
 	public static void main(String[] args) {
 		String name = "Karl";
