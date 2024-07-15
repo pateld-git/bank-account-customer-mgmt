@@ -6,21 +6,25 @@ import com.fdmgroup.DAO.AccountReaderDAO;
 import com.fdmgroup.DAO.AccountWriterDAO;
 import com.fdmgroup.model.Account;
 
-public class AccountServiceImpl implements AccountService{
-
+public class AccountServiceImpl implements AccountService {
+	
+	/*---------------------------------------------------------------------------------------------------------------*/
+	/* Attributes */
+	/*---------------------------------------------------------------------------------------------------------------*/
 	private AccountReaderDAO accountReaderDAO;
 	private AccountWriterDAO accountWriterDAO;
-	
-	
-	
+
+	/*---------------------------------------------------------------------------------------------------------------*/
+	/* Constructor Methods */
+	/*---------------------------------------------------------------------------------------------------------------*/
 	public AccountServiceImpl(AccountReaderDAO accountReaderDAO, AccountWriterDAO accountWriterDAO) {
 		super();
 		this.accountReaderDAO = accountReaderDAO;
 		this.accountWriterDAO = accountWriterDAO;
 	}
-	
+
 	/*---------------------------------------------------------------------------------------------------------------*/
-	/*Implemented Methods*/
+	/* Implemented Methods */
 	/*---------------------------------------------------------------------------------------------------------------*/
 	@Override
 	public List<Account> getAccounts() {
