@@ -72,5 +72,7 @@ public class AccountServiceTest {
 		Account actualAccount = accountServiceTestAccountService.createAccount(expectedAccount);
 		
 		// Assert
+		verify(mockAccountWriterDAO).createAccount(expectedAccount);
+		assertSame(expectedAccount, actualAccount);
 	}
 }
