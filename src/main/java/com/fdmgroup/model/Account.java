@@ -18,14 +18,14 @@ public abstract class Account {
 	/*---------------------------------------------------------------------------------------------------------------*/
 	/* Class Constructors */
 	/*---------------------------------------------------------------------------------------------------------------*/
-	public Account() {
+	protected Account() {
 		int idIncrement = 5;
 
 		this.ACCOUNT_ID = nextAccountID.getAndAdd(idIncrement);
 		this.balance = 0.00;
 	}
 
-	public Account(double balance) {
+	protected Account(double balance) {
 		int idIncrement = 5;
 
 		this.ACCOUNT_ID = nextAccountID.getAndAdd(idIncrement);

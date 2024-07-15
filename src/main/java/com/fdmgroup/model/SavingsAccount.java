@@ -27,8 +27,9 @@ public class SavingsAccount extends Account {
 	/*---------------------------------------------------------------------------------------------------------------*/
 	/* Class Methods */
 	/*---------------------------------------------------------------------------------------------------------------*/
-
+	
 	// Withdraws money from the account balance
+	@Override
 	public double withdraw(double amount) {
 
 		// give money if balance is greater than or equal to withdrawal amount

@@ -28,16 +28,16 @@ public class AccountController {
 		if (type.contentEquals("person")) {
 			Person newCustomer = new Person(name, address);
 
-			customers.add((Customer) newCustomer);
-			return (Customer) newCustomer;
+			customers.add(newCustomer);
+			return newCustomer;
 		}
 
 		// Create a company customer type
 		else if (type.contentEquals("company")) {
 			Company newCustomer = new Company(name, address);
 
-			customers.add((Customer) newCustomer);
-			return (Customer) newCustomer;
+			customers.add(newCustomer);
+			return newCustomer;
 		}
 
 		// Invalid type
@@ -54,20 +54,20 @@ public class AccountController {
 		if (type.contentEquals("checking")) {
 			CheckingAccount newAccount = new CheckingAccount();
 
-			accounts.add((Account) newAccount);
+			accounts.add(newAccount);
 			customer.addAccount(newAccount);
 
-			return (Account) newAccount;
+			return newAccount;
 		}
 
 		// Create a savings account type
 		else if (type.contentEquals("savings")) {
 			SavingsAccount newAccount = new SavingsAccount();
 
-			accounts.add((Account) newAccount);
+			accounts.add(newAccount);
 			customer.addAccount(newAccount);
 
-			return (Account) newAccount;
+			return newAccount;
 		}
 
 		// Invalid type
@@ -97,7 +97,6 @@ public class AccountController {
 				c.removeAccount(account);
 			}
 		}
-		// customer.removeAccount(account);
 	}
 
 	/*---------------------------------------------------------------------------------------------------------------*/

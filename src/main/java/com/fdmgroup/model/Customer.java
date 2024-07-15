@@ -26,7 +26,7 @@ public abstract class Customer {
 	/*---------------------------------------------------------------------------------------------------------------*/
 	/* Class Constructors */
 	/*---------------------------------------------------------------------------------------------------------------*/
-	public Customer(String name, String address) {
+	protected Customer(String name, String address) {
 		int idIncrement = 7;
 
 		this.CUSTOMER_ID = nextCustomer_ID.getAndAdd(idIncrement);

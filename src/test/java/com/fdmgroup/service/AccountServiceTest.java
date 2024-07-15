@@ -16,7 +16,7 @@ import com.fdmgroup.DAO.AccountWriterDAO;
 import com.fdmgroup.model.Account;
 import com.fdmgroup.model.SavingsAccount;
 
-public class AccountServiceTest {
+class AccountServiceTest {
 	
 	/*---------------------------------------------------------------------------------------------------------------*/
 	/* Attributes */
@@ -32,7 +32,7 @@ public class AccountServiceTest {
 	/* Set Up Methods */
 	/*---------------------------------------------------------------------------------------------------------------*/
 	@BeforeEach
-	public void setUp() {
+	void setUp() {
 		account = new SavingsAccount();
 
 		mockAccountReaderDAO = mock(AccountReaderDAO.class);
@@ -45,7 +45,7 @@ public class AccountServiceTest {
 	/* Test Methods */
 	/*---------------------------------------------------------------------------------------------------------------*/
 	@Test
-	public void testWhenAccountServiceImpl_callsGetAccounts_andReturnsListofAccounts_fromAccountReaderDAO() {
+	void testWhenAccountServiceImpl_callsGetAccounts_andReturnsListofAccounts_fromAccountReaderDAO() {
 		// Arrange
 		List<Account> expectedAccountList = new ArrayList<>();
 
@@ -61,7 +61,7 @@ public class AccountServiceTest {
 	}
 
 	@Test
-	public void testWhenAccountServiceImpl_callsRemoveAccount_accountWriterDAO_passingInAction() {
+	void testWhenAccountServiceImpl_callsRemoveAccount_accountWriterDAO_passingInAction() {
 		// Act
 		accountServiceTestAccountService.removeAccount(account);
 
@@ -70,7 +70,7 @@ public class AccountServiceTest {
 	}
 
 	@Test
-	public void testWhenAccountServiceImpl_callsCreateAccount_andPassesAccountObject_intoAccountWriterDAO() {
+	void testWhenAccountServiceImpl_callsCreateAccount_andPassesAccountObject_intoAccountWriterDAO() {
 		// Arrange
 		Account expectedAccount = account;
 

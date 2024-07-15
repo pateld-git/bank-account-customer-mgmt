@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import com.fdmgroup.model.Account;
 import com.fdmgroup.model.CheckingAccount;
 
-public class FeeCalculationServiceTest {
+class FeeCalculationServiceTest {
 
 	/*---------------------------------------------------------------------------------------------------------------*/
 	/* Attributes */
@@ -21,7 +21,7 @@ public class FeeCalculationServiceTest {
 	/* Set Up Methods */
 	/*---------------------------------------------------------------------------------------------------------------*/
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() {
 		testAccount = new CheckingAccount();
 		feeCalculationServiceTest = new FeeCalculationServiceImpl();
 	}
@@ -69,7 +69,6 @@ public class FeeCalculationServiceTest {
 
 		// Assert
 		assertEquals(expectedFee, actualFee);
-		// assertEquals(testAccount.getBalance(), testBalance);
 	}
 
 	@Test
