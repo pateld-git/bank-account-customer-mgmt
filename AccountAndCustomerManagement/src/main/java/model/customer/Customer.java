@@ -1,7 +1,9 @@
-package model;
+package model.customer;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import model.account.Account;
 
 public abstract class Customer {
 	private final long CUSTOMER_ID;
@@ -13,6 +15,7 @@ public abstract class Customer {
 	public abstract void chargeAllAccounts(double amount);
 	
 	public Customer(String name, String address) {
+		super();
 		CUSTOMER_ID = nextCustomerId;
 		nextCustomerId += 7;
 		this.name = name;

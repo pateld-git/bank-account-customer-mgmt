@@ -1,6 +1,8 @@
-package model;
+package model.customer;
 
 import java.util.List;
+
+import model.account.Account;
 
 public class Person extends Customer {
 	public Person(String name, String address) {
@@ -10,8 +12,8 @@ public class Person extends Customer {
 	@Override
 	public void chargeAllAccounts(double amount) {
 		List<Account> allAccounts = getAccounts();
-		for (Account a : allAccounts) {
-			a.withdraw(amount);
+		for (Account a : allAccounts) { 
+			a.withdraw(amount); 
 		}	
 	}
 }

@@ -1,22 +1,27 @@
-package model;
+package model.account;
 
 public abstract class Account {
 	private final long ACCOUNT_ID;
-	private static long nextAccountID;
-	double balance;
+	private static long nextAccountID = 1_000;
+	protected double balance;
 	
 	public Account() {
-		ACCOUNT_ID = 0;
+		super();
+		ACCOUNT_ID = nextAccountID;
+		nextAccountID += 5;
 	}
 	
 	public double withdraw(double amount) {
-		return 0;
+		balance -= amount;
+		return amount;
 	}
 	
 	public void deposit(double amount) {
+		balance += amount;
 	}
 	
 	public void correctBalance(double amount) {
+		balance = amount;
 	}
 	
 	public long getACCOUNT_ID() {

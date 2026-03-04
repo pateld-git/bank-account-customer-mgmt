@@ -1,12 +1,14 @@
-package model;
+package model.account;
 
 public class CheckingAccount extends Account {
-	public int nextCheckNumber;
+	private int nextCheckNumber;
+	
 	public CheckingAccount() {
 		super();
+		nextCheckNumber = 1;
 	}
 	
 	public int getNextCheckNumber() {
-		return nextCheckNumber;
+		return nextCheckNumber++;
 	}
 }
