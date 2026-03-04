@@ -6,7 +6,7 @@ public abstract class Account {
 	double balance;
 	
 	public Account() {
-		this.ACCOUNT_ID = 0;
+		ACCOUNT_ID = 0;
 	}
 	
 	public double withdraw(double amount) {
