@@ -14,6 +14,10 @@ public class AccountController {
 	private List<Customer> customers = new ArrayList<>();
     private List<Account> accounts = new ArrayList<>();
 	
+	public AccountController() {
+		super();
+	}
+
 	public Customer createCustomer(String name, String address, String type) {
 		if(type.trim().equalsIgnoreCase("person")) {
 			Person person = new Person(name, address);
