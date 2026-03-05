@@ -9,6 +9,7 @@ public abstract class Account {
 		super();
 		ACCOUNT_ID = nextAccountID;
 		nextAccountID += 5;
+		balance = 0;
 	}
 	
 	public double withdraw(double amount) {

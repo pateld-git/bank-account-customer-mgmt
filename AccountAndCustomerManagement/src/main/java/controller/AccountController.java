@@ -14,12 +14,12 @@ public class AccountController {
 	private List<Customer> customers;
     private List<Account> accounts;
     
-    public AccountController() {
-    	super();;
-    	customers = new ArrayList<>();
-        accounts = new ArrayList<>();
+	public AccountController() {
+		super();
+		customers = new ArrayList<>();
+	    accounts = new ArrayList<>();
 	}
-	
+
 	public Customer createCustomer(String name, String address, String type) {
 		if(type.trim().equalsIgnoreCase("person")) {
 			Person person = new Person(name, address);
