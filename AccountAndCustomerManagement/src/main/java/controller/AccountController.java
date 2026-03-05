@@ -11,11 +11,13 @@ import model.customer.Customer;
 import model.customer.Person;
 
 public class AccountController {
-	private List<Customer> customers = new ArrayList<>();
-    private List<Account> accounts = new ArrayList<>();
+	private List<Customer> customers;
+    private List<Account> accounts;
 	
 	public AccountController() {
 		super();
+		customers = new ArrayList<>();
+	    accounts = new ArrayList<>();
 	}
 
 	public Customer createCustomer(String name, String address, String type) {
