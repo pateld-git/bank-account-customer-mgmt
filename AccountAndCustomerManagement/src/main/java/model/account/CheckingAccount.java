@@ -6,6 +6,7 @@ public class CheckingAccount extends Account {
 	public CheckingAccount() {
 		super();
 		nextCheckNumber = 1;
+		balance = 250;
 	}
 	
 	public int getNextCheckNumber() {

@@ -6,6 +6,7 @@ public class SavingsAccount extends Account {
 	public SavingsAccount() {
 		super();
 		interestRate = 0.39;
+		balance = 500;
 	}
 	
 	public void addInterest() {
