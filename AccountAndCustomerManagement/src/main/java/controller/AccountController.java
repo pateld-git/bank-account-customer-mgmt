@@ -12,13 +12,8 @@ import model.customer.Person;
 
 public class AccountController {
 	private List<Customer> customers;
-<<<<<<< HEAD
-    private List<Account> accounts;
-    
-=======
 	private List<Account> accounts;
 
->>>>>>> refs/heads/Sprint1
 	public AccountController() {
 		super();
 		customers = new ArrayList<>();
