@@ -1,13 +1,13 @@
 package model.account;
 
 public abstract class Account {
-	private final long ACCOUNT_ID;
+	private final long accountID;
 	private static long nextAccountID = 1_000;
 	protected double balance;
 	
 	protected Account() {
 		super();
-		ACCOUNT_ID = nextAccountID;
+		accountID = nextAccountID;
 		nextAccountID += 5;
 		balance = 0;
 	}
@@ -25,8 +25,8 @@ public abstract class Account {
 		balance = amount;
 	}
 	
-	public long getACCOUNT_ID() {
-		return ACCOUNT_ID;
+	public long getaccountID() {
+		return accountID;
 	}
 	public double getBalance() {
 		return balance;

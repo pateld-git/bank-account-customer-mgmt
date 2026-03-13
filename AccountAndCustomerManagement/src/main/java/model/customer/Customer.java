@@ -6,7 +6,7 @@ import java.util.List;
 import model.account.Account;
 
 public abstract class Customer {
-	private final long CUSTOMER_ID;
+	private final long customerID;
 	private static long nextCustomerId = 2_000_000;
 	private String name;
 	private String address;
@@ -16,11 +16,11 @@ public abstract class Customer {
 	
 	protected Customer(String name, String address) {
 		super();
-		CUSTOMER_ID = nextCustomerId;
+		customerID = nextCustomerId;
 		nextCustomerId += 7;
 		this.name = name;
 		this.address = address;
-		accounts = new ArrayList<Account>();
+		accounts = new ArrayList<>();
 	}
 	
 	public void addAccount(Account account) {
@@ -43,8 +43,8 @@ public abstract class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public long getCUSTOMER_ID() {
-		return CUSTOMER_ID;
+	public long customerID() {
+		return customerID;
 	}
 	public List<Account> getAccounts() {
 		return accounts;
