@@ -14,7 +14,7 @@ public abstract class Customer {
 	
 	public abstract void chargeAllAccounts(double amount);
 	
-	public Customer(String name, String address) {
+	protected Customer(String name, String address) {
 		super();
 		CUSTOMER_ID = nextCustomerId;
 		nextCustomerId += 7;
