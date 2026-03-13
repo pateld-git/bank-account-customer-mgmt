@@ -6,7 +6,10 @@ public class SavingsAccount extends Account {
 	public SavingsAccount() {
 		super();
 		interestRate = 0.39;
+<<<<<<< HEAD
 		balance = 500;
+=======
+>>>>>>> branch 'main' of https://git.fdmgroup.com/Duncan.Patel/bank-account-customer-mgmt.git
 	}
 	
 	public void addInterest() {

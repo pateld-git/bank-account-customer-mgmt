@@ -11,6 +11,7 @@ import model.customer.Customer;
 import model.customer.Person;
 
 public class AccountController {
+<<<<<<< HEAD
 	private List<Customer> customers;
     private List<Account> accounts;
     
@@ -20,6 +21,11 @@ public class AccountController {
 	    accounts = new ArrayList<>();
 	}
 
+=======
+	private List<Customer> customers = new ArrayList<>();
+    private List<Account> accounts = new ArrayList<>();
+	
+>>>>>>> branch 'main' of https://git.fdmgroup.com/Duncan.Patel/bank-account-customer-mgmt.git
 	public Customer createCustomer(String name, String address, String type) {
 		if(type.trim().equalsIgnoreCase("person")) {
 			Person person = new Person(name, address);
