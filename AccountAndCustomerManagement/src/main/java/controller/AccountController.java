@@ -11,63 +11,55 @@ import model.customer.Customer;
 import model.customer.Person;
 
 public class AccountController {
-<<<<<<< HEAD
 	private List<Customer> customers;
-    private List<Account> accounts;
-    
+	private List<Account> accounts;
+
 	public AccountController() {
 		super();
 		customers = new ArrayList<>();
-	    accounts = new ArrayList<>();
+		accounts = new ArrayList<>();
 	}
 
-=======
-	private List<Customer> customers = new ArrayList<>();
-    private List<Account> accounts = new ArrayList<>();
-	
->>>>>>> branch 'main' of https://git.fdmgroup.com/Duncan.Patel/bank-account-customer-mgmt.git
 	public Customer createCustomer(String name, String address, String type) {
-		if(type.trim().equalsIgnoreCase("person")) {
+		if (type.trim().equalsIgnoreCase("person")) {
 			Person person = new Person(name, address);
 			customers.add(person);
 			return person;
-		}
-		else if(type.trim().equalsIgnoreCase("company")) {
-			Company company  = new Company(name, address);
+		} else if (type.trim().equalsIgnoreCase("company")) {
+			Company company = new Company(name, address);
 			customers.add(company);
 			return company;
 		}
 
 		return null;
 	}
-	
+
 	public Account createAccount(Customer customer, String type) {
-		if(type.trim().equalsIgnoreCase("checking")) {
+		if (type.trim().equalsIgnoreCase("checking")) {
 			CheckingAccount checking = new CheckingAccount();
 			accounts.add(checking);
 			customer.addAccount(checking);
 			return checking;
-		}
-		else if(type.trim().equalsIgnoreCase("savings")) {
+		} else if (type.trim().equalsIgnoreCase("savings")) {
 			SavingsAccount savings = new SavingsAccount();
 			accounts.add(savings);
 			customer.addAccount(savings);
 			return savings;
 		}
-		
+
 		return null;
 	}
-	
+
 	public void removeCustomer(Customer customer) {
 		customers.remove(customer);
 		for (Account account : customer.getAccounts()) {
-				accounts.remove(account);
+			accounts.remove(account);
 		}
 	}
-	
+
 	public void removeAccount(Account account) {
 		accounts.remove(account);
-		for(Customer customer : customers) {
+		for (Customer customer : customers) {
 			customer.removeAccount(account);
 		}
 	}
@@ -75,9 +67,8 @@ public class AccountController {
 	public List<Customer> getCustomers() {
 		return customers;
 	}
+
 	public List<Account> getAccounts() {
 		return accounts;
-	}	
+	}
 }
-	
-

@@ -6,10 +6,7 @@ public class CheckingAccount extends Account {
 	public CheckingAccount() {
 		super();
 		nextCheckNumber = 1;
-<<<<<<< HEAD
 		balance = 250;
-=======
->>>>>>> branch 'main' of https://git.fdmgroup.com/Duncan.Patel/bank-account-customer-mgmt.git
 	}
 	
 	public int getNextCheckNumber() {

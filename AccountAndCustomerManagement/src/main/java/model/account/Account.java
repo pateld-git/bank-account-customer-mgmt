@@ -9,10 +9,7 @@ public abstract class Account {
 		super();
 		ACCOUNT_ID = nextAccountID;
 		nextAccountID += 5;
-<<<<<<< HEAD
 		balance = 0;
-=======
->>>>>>> branch 'main' of https://git.fdmgroup.com/Duncan.Patel/bank-account-customer-mgmt.git
 	}
 	
 	public double withdraw(double amount) {
