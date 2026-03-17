@@ -1,10 +1,10 @@
 package manual.testing;
 
 import controller.AccountController;
-import model.account.CheckingAccount;
-import model.account.SavingsAccount;
-import model.customer.Company;
-import model.customer.Person;
+import dao.account.CheckingAccount;
+import dao.account.SavingsAccount;
+import dao.customer.Company;
+import dao.customer.Person;
 
 public class Runner {
 
