@@ -1,10 +1,10 @@
-package model.customer;
+package dao.customer;
 
 import java.util.List;
 
-import model.account.Account;
-import model.account.CheckingAccount;
-import model.account.SavingsAccount;
+import dao.account.Account;
+import dao.account.CheckingAccount;
+import dao.account.SavingsAccount;
 
 public class Company extends Customer {
 	public Company(String name, String address) {

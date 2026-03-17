@@ -3,12 +3,12 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.account.Account;
-import model.account.CheckingAccount;
-import model.account.SavingsAccount;
-import model.customer.Company;
-import model.customer.Customer;
-import model.customer.Person;
+import dao.account.Account;
+import dao.account.CheckingAccount;
+import dao.account.SavingsAccount;
+import dao.customer.Company;
+import dao.customer.Customer;
+import dao.customer.Person;
 
 public class AccountController {
 	private List<Customer> customers;

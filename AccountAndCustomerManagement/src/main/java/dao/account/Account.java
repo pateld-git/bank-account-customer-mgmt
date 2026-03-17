@@ -1,4 +1,4 @@
-package model.account;
+package dao.account;
 
 public abstract class Account {
 	private final long ACCOUNT_ID;

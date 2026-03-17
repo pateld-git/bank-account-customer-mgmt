@@ -1,8 +1,8 @@
-package model.customer;
+package dao.customer;
 
 import java.util.List;
 
-import model.account.Account;
+import dao.account.Account;
 
 public class Person extends Customer {
 	public Person(String name, String address) {

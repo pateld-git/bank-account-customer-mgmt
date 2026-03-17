@@ -1,4 +1,4 @@
-package model.account;
+package dao.account;
 
 public class CheckingAccount extends Account {
 	private int nextCheckNumber;

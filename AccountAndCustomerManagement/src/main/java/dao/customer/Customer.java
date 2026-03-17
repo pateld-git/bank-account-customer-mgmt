@@ -1,9 +1,9 @@
-package model.customer;
+package dao.customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import model.account.Account;
+import dao.account.Account;
 
 public abstract class Customer {
 	private final long CUSTOMER_ID;
