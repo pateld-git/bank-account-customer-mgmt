@@ -1,4 +1,4 @@
-package dao.account;
+package dto.account;
 
 public class SavingsAccount extends Account {
 	private double interestRate;

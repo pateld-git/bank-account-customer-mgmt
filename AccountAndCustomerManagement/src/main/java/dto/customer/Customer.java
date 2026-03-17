@@ -1,9 +1,9 @@
-package dao.customer;
+package dto.customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.account.Account;
+import dto.account.Account;
 
 public abstract class Customer {
 	private final long CUSTOMER_ID;
@@ -14,13 +14,13 @@ public abstract class Customer {
 	
 	public abstract void chargeAllAccounts(double amount);
 	
-	public Customer(String name, String address) {
+	protected Customer(String name, String address) {
 		super();
 		CUSTOMER_ID = nextCustomerId;
 		nextCustomerId += 7;
 		this.name = name;
 		this.address = address;
-		accounts = new ArrayList<Account>();
+		accounts = new ArrayList<>();
 	}
 	
 	public void addAccount(Account account) {

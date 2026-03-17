@@ -1,8 +1,8 @@
-package dao.customer;
+package dto.customer;
 
 import java.util.List;
 
-import dao.account.Account;
+import dto.account.Account;
 
 public class Person extends Customer {
 	public Person(String name, String address) {

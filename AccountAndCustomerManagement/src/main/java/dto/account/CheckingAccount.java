@@ -1,4 +1,4 @@
-package dao.account;
+package dto.account;
 
 public class CheckingAccount extends Account {
 	private int nextCheckNumber;
