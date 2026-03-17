@@ -1,11 +1,11 @@
-package dao.account;
+package dto.account;
 
 public abstract class Account {
 	private final long ACCOUNT_ID;
 	private static long nextAccountID = 1_000;
 	protected double balance;
 	
-	public Account() {
+	protected Account() {
 		super();
 		ACCOUNT_ID = nextAccountID;
 		nextAccountID += 5;
