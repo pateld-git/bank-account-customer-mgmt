@@ -1,10 +1,12 @@
-package dto.customer;
+package com.fdmgroup.dto.customer;
 
 import java.util.List;
 
-import dto.account.Account;
-import dto.account.CheckingAccount;
-import dto.account.SavingsAccount;
+import com.fdmgroup.dto.account.Account;
+import com.fdmgroup.dto.account.CheckingAccount;
+import com.fdmgroup.dto.account.SavingsAccount;
+
+
 
 public class Company extends Customer {
 	public Company(String name, String address) {

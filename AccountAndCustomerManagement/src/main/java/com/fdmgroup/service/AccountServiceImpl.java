@@ -1,13 +1,13 @@
-package service;
+package com.fdmgroup.service;
 
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import dao.AccountReaderDAO;
-import dao.AccountWriterDAO;
-import dto.account.Account;
+import com.fdmgroup.dao.AccountReaderDAO;
+import com.fdmgroup.dao.AccountWriterDAO;
+import com.fdmgroup.dto.account.Account;
 
 public class AccountServiceImpl implements AccountService {
 	private static final Logger LOGGER = LogManager.getLogger(AccountServiceImpl.class);

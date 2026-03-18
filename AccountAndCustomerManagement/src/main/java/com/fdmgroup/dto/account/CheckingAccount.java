@@ -1,4 +1,4 @@
-package dto.account;
+package com.fdmgroup.dto.account;
 
 public class CheckingAccount extends Account {
 	private int nextCheckNumber;

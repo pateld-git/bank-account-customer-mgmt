@@ -1,4 +1,4 @@
-package dto.account;
+package com.fdmgroup.dto.account;
 
 public class SavingsAccount extends Account {
 	private double interestRate;

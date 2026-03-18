@@ -1,9 +1,9 @@
-package dto.customer;
+package com.fdmgroup.dto.customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.account.Account;
+import com.fdmgroup.dto.account.Account;
 
 public abstract class Customer {
 	private final long CUSTOMER_ID;

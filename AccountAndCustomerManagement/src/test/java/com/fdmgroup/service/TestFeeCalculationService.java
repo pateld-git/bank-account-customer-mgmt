@@ -1,4 +1,4 @@
-package tests.service;
+package com.fdmgroup.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,9 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import service.FeeCalculationService;
-import service.FeeCalculationServiceImpl;
 
 class TestFeeCalculationService {
 	private static final Logger LOGGER = LogManager.getLogger(TestFeeCalculationService.class);

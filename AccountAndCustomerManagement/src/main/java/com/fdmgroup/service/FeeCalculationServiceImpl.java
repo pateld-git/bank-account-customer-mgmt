@@ -1,9 +1,9 @@
-package service;
+package com.fdmgroup.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import model.BankBalanceTier;
+import com.fdmgroup.model.BankBalanceTier;
 
 public class FeeCalculationServiceImpl implements FeeCalculationService {
 	private static final Logger LOGGER = LogManager.getLogger(FeeCalculationServiceImpl.class);

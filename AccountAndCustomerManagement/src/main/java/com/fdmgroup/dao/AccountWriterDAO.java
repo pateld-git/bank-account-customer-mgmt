@@ -1,6 +1,6 @@
-package dao;
+package com.fdmgroup.dao;
 
-import dto.account.Account;
+import com.fdmgroup.dto.account.Account;
 
 public interface AccountWriterDAO {
 

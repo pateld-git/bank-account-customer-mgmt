@@ -1,18 +1,18 @@
-package controller;
+package com.fdmgroup.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.account.Account;
-import dto.account.CheckingAccount;
-import dto.account.SavingsAccount;
-import dto.customer.Company;
-import dto.customer.Customer;
-import dto.customer.Person;
+import com.fdmgroup.dto.account.Account;
+import com.fdmgroup.dto.account.CheckingAccount;
+import com.fdmgroup.dto.account.SavingsAccount;
+import com.fdmgroup.dto.customer.Company;
+import com.fdmgroup.dto.customer.Customer;
+import com.fdmgroup.dto.customer.Person;
 
 public class AccountController {
 	private List<Customer> customers;
-    private List<Account> accounts;
+    private List<com.fdmgroup.dto.account.Account> accounts;
     
 	public AccountController() {
 		super();
@@ -35,7 +35,7 @@ public class AccountController {
 		return null;
 	}
 	
-	public Account createAccount(Customer customer, String type) {
+	public com.fdmgroup.dto.account.Account createAccount(Customer customer, String type) {
 		if(type.trim().equalsIgnoreCase("checking")) {
 			CheckingAccount checking = new CheckingAccount();
 			accounts.add(checking);

@@ -1,4 +1,4 @@
-package model;
+package com.fdmgroup.model;
 
 public enum BankBalanceTier {
 	BOTTOM_BALANCE(100.00, 20.00), LOW_BALANCE(500.00, 15.00), MEDIUM_BALANCE(1000.00, 10.00),

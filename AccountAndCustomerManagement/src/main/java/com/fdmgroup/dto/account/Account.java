@@ -1,4 +1,4 @@
-package dto.account;
+package com.fdmgroup.dto.account;
 
 public abstract class Account {
 	private final long ACCOUNT_ID;

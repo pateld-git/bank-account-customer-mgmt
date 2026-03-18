@@ -1,8 +1,8 @@
-package dto.customer;
+package com.fdmgroup.dto.customer;
 
 import java.util.List;
 
-import dto.account.Account;
+import com.fdmgroup.dto.account.Account;
 
 public class Person extends Customer {
 	public Person(String name, String address) {

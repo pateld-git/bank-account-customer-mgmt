@@ -1,8 +1,8 @@
-package service;
+package com.fdmgroup.service;
 
 import java.util.List;
 
-import dto.account.Account;
+import com.fdmgroup.dto.account.Account;
 
 public interface AccountService {
 
