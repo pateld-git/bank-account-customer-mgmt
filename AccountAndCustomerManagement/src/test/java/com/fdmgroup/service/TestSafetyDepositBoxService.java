@@ -2,13 +2,17 @@ package com.fdmgroup.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import com.fdmgroup.model.SafetyDepositBox;
 
@@ -40,17 +44,20 @@ class TestSafetyDepositBoxService {
 		assertTrue(availableBox.isEmpty(), "There should be no available Safety Deposit Boxes.");
 	}
 
-	@Test
-	void test_AllocateSafetyDepositBox_CreatesNewSafetyDepositBoxWhenPoolIsEmpty() {
-		SafetyDepositBoxService.setNumberOfSafetyDepositBox(2);
-
-		SafetyDepositBox box1 = safetyDepositBoxService.allocateSafetyDepositBox();
-		SafetyDepositBox box2 = safetyDepositBoxService.allocateSafetyDepositBox();
-
-		assertNotNull(box1, "Box 1 is null.");
-		assertNotNull(box2, "Box 2 is null.");
-		assertNotSame(box1, box2, "Reuse of boxes.");
-//		assertEquals(2, safetyDepositBoxService.getSafetyDepositBoxes().size());
+	@ParameterizedTest(name = "Allocating {0} Boxes Should Create {0} boxes")
+	@ValueSource(ints = {0, 1, 2, 3, 4, 5})
+	void test_AllocateSafetyDepositBox_CreatesNewSafetyDepositBox_WhenPoolIsEmpty_OrNoAvailableBoxes(int boxAmount) {
+		SafetyDepositBoxService.setNumberOfSafetyDepositBox(boxAmount);
+		
+		for (int i = 0; i < boxAmount; i++) {
+			safetyDepositBoxService.allocateSafetyDepositBox();
+		}
+		
+		List<SafetyDepositBox> createdBoxes = safetyDepositBoxService.getSafetyDepositBoxes();
+		Set<SafetyDepositBox> uniqueBoxes = new HashSet<>(createdBoxes);
+		
+		assertEquals(boxAmount, uniqueBoxes.size(), "Less than " + boxAmount + " boxes were created.");
+		
 	}
 
 	@Test
