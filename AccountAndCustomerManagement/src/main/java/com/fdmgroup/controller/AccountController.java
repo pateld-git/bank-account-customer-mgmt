@@ -12,7 +12,7 @@ import com.fdmgroup.dto.customer.Person;
 
 public class AccountController {
 	private List<Customer> customers;
-    private List<com.fdmgroup.dto.account.Account> accounts;
+    private List<Account> accounts;
     
 	public AccountController() {
 		super();
@@ -35,7 +35,7 @@ public class AccountController {
 		return null;
 	}
 	
-	public com.fdmgroup.dto.account.Account createAccount(Customer customer, String type) {
+	public Account createAccount(Customer customer, String type) {
 		if(type.trim().equalsIgnoreCase("checking")) {
 			CheckingAccount checking = new CheckingAccount();
 			accounts.add(checking);
