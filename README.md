@@ -1,3 +1,3 @@
 # bank-account-customer-mgmt
 
-Refer to branches for the version for each Sprint
+Refer to branches for the desired version from each Sprint
