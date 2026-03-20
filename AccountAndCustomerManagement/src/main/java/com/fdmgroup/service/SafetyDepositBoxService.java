@@ -63,13 +63,13 @@ public class SafetyDepositBoxService {
 
 	public synchronized int getNumberOfAvailableSafetyDepositBox() {
 		int count = safetyDepositBoxes.size();
-		
+
 		for (SafetyDepositBox box : safetyDepositBoxes) {
 			if (box.isAlloted()) {
 				count--;
 			}
 		}
-		
+
 		return count;
 	}
 
