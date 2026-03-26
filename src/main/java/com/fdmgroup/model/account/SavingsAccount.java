@@ -1,4 +1,4 @@
-package model.account;
+package com.fdmgroup.model.account;
 
 public class SavingsAccount extends Account {
 	private double interestRate;

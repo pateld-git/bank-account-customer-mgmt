@@ -1,10 +1,10 @@
-package model.customer;
+package com.fdmgroup.model.customer;
 
 import java.util.List;
 
-import model.account.Account;
-import model.account.CheckingAccount;
-import model.account.SavingsAccount;
+import com.fdmgroup.model.account.Account;
+import com.fdmgroup.model.account.CheckingAccount;
+import com.fdmgroup.model.account.SavingsAccount;
 
 public class Company extends Customer {
 	public Company(String name, String address) {

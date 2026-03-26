@@ -1,8 +1,8 @@
-package model.customer;
+package com.fdmgroup.model.customer;
 
 import java.util.List;
 
-import model.account.Account;
+import com.fdmgroup.model.account.Account;
 
 public class Person extends Customer {
 	public Person(String name, String address) {

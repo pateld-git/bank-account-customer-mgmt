@@ -1,4 +1,4 @@
-package model.account;
+package com.fdmgroup.model.account;
 
 public class CheckingAccount extends Account {
 	private int nextCheckNumber;

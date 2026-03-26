@@ -1,10 +1,10 @@
-package manual.testing;
+package com.fdmgroup.manual;
 
-import controller.AccountController;
-import model.account.CheckingAccount;
-import model.account.SavingsAccount;
-import model.customer.Company;
-import model.customer.Person;
+import com.fdmgroup.controller.AccountController;
+import com.fdmgroup.model.account.CheckingAccount;
+import com.fdmgroup.model.account.SavingsAccount;
+import com.fdmgroup.model.customer.Company;
+import com.fdmgroup.model.customer.Person;
 
 public class Runner {
 

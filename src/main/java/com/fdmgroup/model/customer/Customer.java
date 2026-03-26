@@ -1,9 +1,9 @@
-package model.customer;
+package com.fdmgroup.model.customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import model.account.Account;
+import com.fdmgroup.model.account.Account;
 
 public abstract class Customer {
 	private final long CUSTOMER_ID;
