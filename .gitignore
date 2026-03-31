@@ -1,2 +1,4 @@
 /bin/
 .project
+package-lock.json
+/api/node_modules
