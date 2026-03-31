@@ -5,7 +5,7 @@ public abstract class Account {
 	private static long nextAccountID = 1_000;
 	protected double balance;
 	
-	public Account() {
+	protected Account() {
 		super();
 		ACCOUNT_ID = nextAccountID;
 		nextAccountID += 5;
