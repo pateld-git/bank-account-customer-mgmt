@@ -40,4 +40,4 @@ The purpose of this follow-up project is to show competency in:
 
 ## Sprint4
 
-To be added in a future release
+To be added in a future release.
