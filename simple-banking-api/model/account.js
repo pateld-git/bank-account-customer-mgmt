@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const accountSchema = new mongoose.Schema({
     customerName: {
@@ -19,4 +19,4 @@ const accountSchema = new mongoose.Schema({
     }
 });
 
-exports.Account = mongoose.model('Account', accountSchema);
+export const Account = mongoose.model('Account', accountSchema);
