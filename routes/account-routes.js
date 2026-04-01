@@ -3,10 +3,10 @@ import { createAccount, getAllAccounts, getAccountById, updateAccount, deleteAcc
 
 const router = express.Router();
 
-router.post('/create', createAccount);
-router.get('/get', getAllAccounts);
-router.get('/get/:id', getAccountById);
-router.put('/update/:id', updateAccount);
-router.delete('/delete/:id', deleteAccount);
+router.post('/', createAccount);
+router.get('/', getAllAccounts);
+router.get('/:id', getAccountById);
+router.put('/:id', updateAccount);
+router.delete('/:id', deleteAccount);
 
 export default router;
