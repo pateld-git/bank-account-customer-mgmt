@@ -42,6 +42,7 @@ Before running this project, ensure you have the following installed on your loc
 - **Node.js** and **npm** ([Node.js](https://nodejs.org/))
 - **MySQL** ([MySQL Workbench](https://www.mysql.com/products/workbench/) recommended)
 - **MongoDB** ([MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or local installation)
+- **Postman** ([Postman](https://www.postman.com/)) or a similar tool for testing API endpoints
 
 ### Installation Steps
 
