@@ -15,8 +15,10 @@ const accountSchema = new mongoose.Schema({
         default: 0
     },
     createdAt: {
-        type: Date.now
+        type: Date,
+        default: Date.now
     }
 });
 
-export const Account = mongoose.model('Account', accountSchema);
+const Account = mongoose.model('Account', accountSchema);
+export default Account;
