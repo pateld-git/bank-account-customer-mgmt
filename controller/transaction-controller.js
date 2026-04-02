@@ -3,30 +3,31 @@ import Transaction from "../model/transaction.js";
 
 const deposit = async (req, res) => {
     try {
-        const currentAccountId = req.params.id;
-        const depositFormData = req.body;
-        const accountDetails = await Account.findByIdSafe(currentAccountId);
+        const { id: accountId } = req.params;
+        const { amount, description } = req.body;
 
-        if (Number(depositFormData.amount) < 0.01) {
+        const accountDetails = await Account.findByIdSafe(accountId);
+
+        if (Number(amount) < 0.01) {
             return res.status(400).json({
                 success: false,
                 message: 'Cannot deposit less than $0.01'
             });
         }
 
-        accountDetails.balance += Number(depositFormData.amount);
+        accountDetails.balance += Number(amount);
         await accountDetails.save();
 
         const newTransaction = await Transaction.create({
-            accountId: currentAccountId,
+            accountId,
             type: 'DEPOSIT',
-            amount: depositFormData.amount,
-            description: depositFormData.description || `Deposit: ${depositFormData.amount}`
+            amount,
+            description: description || `Deposit: ${amount}`
         });
 
         res.status(200).json({
             success: true,
-            message: `Successfully deposited ${depositFormData.amount}`,
+            message: `Successfully deposited ${amount}`,
             data: newTransaction
         });
 
@@ -42,30 +43,38 @@ const deposit = async (req, res) => {
 
 const withdraw = async (req, res) => {
     try {
-        const getCurrentAccountID = req.params.id;
-        const withdrawFormData = req.body;
-        const accountDetails = await Account.findByIdSafe(getCurrentAccountID);
+        const { id: accountId } = req.params;
+        const { amount, description } = req.body;
 
-        if (accountDetails.balance < Number(withdrawFormData.amount)) {
+        const accountDetails = await Account.findByIdSafe(accountId);
+
+        if (Number(amount) < 0.01) {
+            return res.status(400).json({
+                success: false,
+                message: 'Minimum withdrawal amount is $0.01'
+            });
+        }
+
+        if (accountDetails.balance < Number(amount)) {
             return res.status(400).json({
                 success: false,
                 message: 'Insufficient balance for this withdrawal.'
             });
         }
 
-        accountDetails.balance -= Number(withdrawFormData.amount);
+        accountDetails.balance -= Number(amount);
         await accountDetails.save();
 
         const newTransaction = await Transaction.create({
             accountId: accountDetails._id,
             type: 'WITHDRAWAL',
-            amount: withdrawFormData.amount,
-            description: withdrawFormData.description || `Withdrawal: ${withdrawFormData.amount}`
+            amount,
+            description: description || `Withdrawal: ${amount}`
         });
 
         res.status(200).json({
             success: true,
-            message: `Successfully withdrew ${withdrawFormData.amount}`,
+            message: `Successfully withdrew ${amount}`,
             data: newTransaction
         });
     } catch (error) {
@@ -80,10 +89,10 @@ const withdraw = async (req, res) => {
 
 const transfer = async (req, res) => {
     try {
-        const sourceAccountId = req.params.id;
-        const transferFormData = req.body;
+        const { id: sourceAccountId } = req.params;
+        const { toAccountId, amount, description } = req.body;
 
-        if (sourceAccountId === transferFormData.toAccountId) {
+        if (sourceAccountId === toAccountId) {
             return res.status(400).json({
                 success: false,
                 message: 'Cannot transfer money to the same account.'
@@ -91,22 +100,22 @@ const transfer = async (req, res) => {
         }
 
         const sourceAccount = await Account.findByIdSafe(sourceAccountId);
-        const destinationAccount = await Account.findByIdSafe(transferFormData.toAccountId);
+        const destinationAccount = await Account.findByIdSafe(toAccountId);
 
-        if (sourceAccount.balance < Number(transferFormData.amount)) {
+        if (sourceAccount.balance < Number(amount)) {
             return res.status(400).json({
                 success: false,
                 message: 'Insufficient balance in the source account.'
             });
-        } else if (transferFormData.amount < 0.01) {
+        } else if (Number(amount) < 0.01) {
             return res.status(400).json({
                 success: false,
-                message: 'Cannot deposit less than $0.01 to the destination account.'
+                message: 'Minimum transfer amount is $0.01'
             });
         }
 
-        sourceAccount.balance -= Number(transferFormData.amount);
-        destinationAccount.balance += Number(transferFormData.amount);
+        sourceAccount.balance -= Number(amount);
+        destinationAccount.balance += Number(amount);
 
         await sourceAccount.save();
         await destinationAccount.save();
@@ -115,13 +124,13 @@ const transfer = async (req, res) => {
             accountId: sourceAccount._id,
             toAccountId: destinationAccount._id,
             type: 'TRANSFER',
-            amount: transferFormData.amount,
-            description: transferFormData.description || `Transfer to account ${toAccountId}`
+            amount,
+            description: description || `Transfer to account ${toAccountId}`
         });
 
         res.status(200).json({
             success: true,
-            message: `Successfully transferred ${transferFormData.amount} to account ${transferFormData.toAccountId}`,
+            message: `Successfully transferred ${amount} to account ${toAccountId}`,
             data: newTransaction
         });
     } catch (error) {
@@ -136,13 +145,13 @@ const transfer = async (req, res) => {
 
 const viewTransactionHistory = async (req, res) => {
     try {
-        const getCurrentAccountID = req.params.id;
-        await Account.findByIdSafe(getCurrentAccountID);
+        const { id: accountId } = req.params;
+        await Account.findByIdSafe(accountId);
 
         const transactionHistory = await Transaction.find({
             $or: [
-                { accountId: getCurrentAccountID },
-                { toAccountId: getCurrentAccountID }
+                { accountId: accountId },
+                { toAccountId: accountId }
             ]
         }).sort({
             createdAt: -1
@@ -151,7 +160,7 @@ const viewTransactionHistory = async (req, res) => {
         res.status(200).json({
             success: true,
             message: 'Transaction history fetched successfully',
-            Data: transactionHistory
+            data: transactionHistory
         });
 
     } catch (error) {
