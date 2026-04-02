@@ -20,5 +20,15 @@ const accountSchema = new mongoose.Schema({
     }
 });
 
+accountSchema.statics.findByIdSafe = async function (id) {
+    const account = await this.findById(id);
+    if (!account) {
+        const error = new Error('Account not found with provided ID.');
+        error.statusCode = 404;
+        throw error;
+    }
+    return account;
+};
+
 const Account = mongoose.model('Account', accountSchema);
 export default Account;
