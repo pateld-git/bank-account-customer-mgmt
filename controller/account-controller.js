@@ -3,21 +3,27 @@ import Account from '../model/account.js';
 const createAccount = async (req, res) => {
     try {
         const newAccountFormData = req.body;
-        const newAccount = await Account.create(newAccountFormData);
 
-        if (newAccount) {
-            res.status(201).json({
-                success: true,
-                message: "Account added successfully",
-                data: newAccount
+        if (!newAccountFormData || Object.keys(newAccountFormData).length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Account details are required."
             });
         }
-    } catch (error) {
-        console.error("Error adding new book:", error);
 
+        const newAccount = await Account.create(newAccountFormData);
+
+        res.status(201).json({
+            success: true,
+            message: "Account added successfully",
+            data: newAccount
+        });
+
+    } catch (error) {
+        console.error("Error creating account:", error);
         res.status(500).json({
             success: false,
-            message: "Error adding new book."
+            message: "Error creating new account."
         })
     }
 }
@@ -35,7 +41,7 @@ const getAllAccounts = async (_req, res) => {
         } else {
             res.status(404).json({
                 success: false,
-                message: 'No Accounts found'
+                message: 'No Accounts found.'
             });
         }
     } catch (error) {
@@ -51,25 +57,19 @@ const getAllAccounts = async (_req, res) => {
 const getAccountById = async (req, res) => {
     try {
         const getCurrentAccountID = req.params.id;
-        const accountDetails = await Account.findById(getCurrentAccountID);
+        const accountDetails = await Account.findByIdSafe(getCurrentAccountID);
 
-        if (!accountDetails) {
-            return res.status(404).json({
-                success: false,
-                message: 'Account not found with provided ID.'
-            });
-        } else {
-            res.status(200).json({
-                success: true,
-                data: accountDetails
-            });
-        }
+        res.status(200).json({
+            success: true,
+            data: accountDetails
+        });
+
     } catch (error) {
         console.error("Error fetching account details:", error);
 
-        res.status(500).json({
+        res.status(error.statusCode || 500).json({
             success: false,
-            message: 'Something went wrong! Please try again.'
+            message: error.message || 'Something went wrong! Please try again.'
         });
     }
 };
@@ -106,8 +106,8 @@ const updateAccount = async (req, res) => {
 
 const deleteAccount = async (req, res) => {
     try {
-        const getCurrentBoodId = req.params.id;
-        const deletedAccount = await Account.findByIdAndDelete(getCurrentBoodId);
+        const getCurrentAccountId = req.params.id;
+        const deletedAccount = await Account.findByIdAndDelete(getCurrentAccountId);
 
         if (!deletedAccount) {
             return res.status(404).json({
@@ -122,7 +122,7 @@ const deleteAccount = async (req, res) => {
         }
     } catch (error) {
         console.error("Error deleting account:", error);
-        res.status.json({
+        res.status(500).json({
             success: false,
             message: 'Something went wrong! Please try again.'
         })
