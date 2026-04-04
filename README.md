@@ -63,7 +63,18 @@ Before running this project, ensure you have the following installed on your loc
    npm install
    ```
 
-4. **Start the application**
+4. **Set up Environment Variables**
+   Create a `.env` file in the root directory of the project and add the following:
+
+   ```env
+   PORT=3000
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET_KEY=your_secret_key_here
+   ```
+
+   _**Note:** Replace the placeholders with your actual MongoDB connection URI and a unique string for `JWT_SECRET_KEY`. For local development, using a literal value like `JWT_SECRET_KEY` is allowed, as the system provides endpoints to register and log in to generate valid tokens for subsequent authenticated requests._
+
+5. **Start the application**
    ```bash
    npm run dev
    ```
