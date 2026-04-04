@@ -99,24 +99,25 @@ const transfer = async (req, res) => {
             });
         }
 
-        const sourceAccount = await Account.findByIdSafe(sourceAccountId);
-        const destinationAccount = await Account.findByIdSafe(toAccountId);
-
-        if (sourceAccount.balance < Number(amount)) {
-            return res.status(400).json({
-                success: false,
-                message: 'Insufficient balance in the source account.'
-            });
-        } else if (Number(amount) < 0.01) {
+        if (Number(amount) < 0.01) {
             return res.status(400).json({
                 success: false,
                 message: 'Minimum transfer amount is $0.01'
             });
         }
 
+        const sourceAccount = await Account.findByIdSafe(sourceAccountId);
+        if (sourceAccount.balance < Number(amount)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Insufficient balance in the source account.'
+            });
+        }
+
+        const destinationAccount = await Account.findByIdSafe(toAccountId);
+
         sourceAccount.balance -= Number(amount);
         destinationAccount.balance += Number(amount);
-
         await sourceAccount.save();
         await destinationAccount.save();
 
