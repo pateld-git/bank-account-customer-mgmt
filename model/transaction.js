@@ -4,17 +4,20 @@ const transactionSchema = new mongoose.Schema({
     accountId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account',
-        required: true
+        required: true,
+        index: true
     },
     type: {
         type: String,
         enum: ['DEPOSIT', 'WITHDRAWAL', 'TRANSFER'],
-        required: true
+        required: true,
+        index: true
     },
     toAccountId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account',
-        required: function () { return this.type === 'TRANSFER'; }
+        required: function () { return this.type === 'TRANSFER'; },
+        index: true
     },
     createdAt: {
         type: Date,
@@ -29,6 +32,10 @@ const transactionSchema = new mongoose.Schema({
         required: true
     }
 });
+
+// Compound indexes for fast history retrieval (both directions) sorted by date
+transactionSchema.index({ accountId: 1, createdAt: -1 });
+transactionSchema.index({ toAccountId: 1, createdAt: -1 });
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
 export default Transaction;
