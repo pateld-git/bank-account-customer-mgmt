@@ -1,12 +1,9 @@
 import mongoose from 'mongoose';
 
 const accountSchema = new mongoose.Schema({
-    customerName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     balance: {
