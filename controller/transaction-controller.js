@@ -1,6 +1,6 @@
 import Account from "../model/account.js";
 import Transaction from "../model/transaction.js";
-import { validateAmount, checkInsufficientBalance, createTransactionRecord } from '../service/transaction-service.js';
+import { validateAmount, checkInsufficientBalance } from '../service/transaction-service.js';
 
 const deposit = async (req, res) => {
     try {
@@ -14,8 +14,11 @@ const deposit = async (req, res) => {
         accountDetails.balance += validatedAmount;
         await accountDetails.save();
 
-        const newTransaction = await createTransactionRecord({
-            accountId, type: 'DEPOSIT', amount: validatedAmount, description
+        const newTransaction = await Transaction.create({
+            accountId,
+            type: 'DEPOSIT',
+            amount: validatedAmount,
+            description: description || `Deposit: $${validatedAmount}`
         });
 
         res.status(200).json({
@@ -47,8 +50,11 @@ const withdraw = async (req, res) => {
         accountDetails.balance -= validatedAmount;
         await accountDetails.save();
 
-        const newTransaction = await createTransactionRecord({
-            accountId: accountDetails._id, type: 'WITHDRAWAL', amount: validatedAmount, description
+        const newTransaction = await Transaction.create({
+            accountId: accountDetails._id,
+            type: 'WITHDRAWAL',
+            amount: validatedAmount,
+            description: description || `Withdrawal: $${validatedAmount}`
         });
 
         res.status(200).json({
@@ -90,14 +96,17 @@ const transfer = async (req, res) => {
         await sourceAccount.save();
         await destinationAccount.save();
 
-        const newTransaction = await createTransactionRecord({
-            accountId: sourceAccount._id, toAccountId: destinationAccount._id,
-            type: 'TRANSFER', amount: validatedAmount, description
+        const newTransaction = await Transaction.create({
+            accountId: sourceAccount._id,
+            toAccountId: destinationAccount._id,
+            type: 'TRANSFER',
+            amount: validatedAmount,
+            description: description || `Transfer to account ${toAccountId} of $${validatedAmount}`
         });
 
         res.status(200).json({
             success: true,
-            message: `Successfully transferred ${amount} to account ${toAccountId}`,
+            message: `Successfully transferred ${amount}.`,
             data: newTransaction
         });
     } catch (error) {
