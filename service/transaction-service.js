@@ -14,7 +14,7 @@ const validateAmount = (amount, minAmount = MIN_TRANSACTION_AMOUNT, errorMessage
     const numericAmount = Number(amount);
     if (isNaN(numericAmount) || numericAmount < minAmount) {
         const error = new Error(errorMessage);
-        error.statusCode = 400; // Bad Request
+        error.statusCode = 400;
         throw error;
     }
     return numericAmount;
@@ -31,7 +31,7 @@ const validateAmount = (amount, minAmount = MIN_TRANSACTION_AMOUNT, errorMessage
 const checkInsufficientBalance = (accountBalance, amount, errorMessage = 'Insufficient balance.') => {
     if (accountBalance < amount) {
         const error = new Error(errorMessage);
-        error.statusCode = 400; // Bad Request
+        error.statusCode = 400;
         throw error;
     }
 };
