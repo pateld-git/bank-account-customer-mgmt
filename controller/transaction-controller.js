@@ -1,5 +1,6 @@
 import Account from "../model/account.js";
 import Transaction from "../model/transaction.js";
+import { validateAmount, checkInsufficientBalance, createTransactionRecord } from '../service/transaction-service.js';
 
 const deposit = async (req, res) => {
     try {
@@ -8,21 +9,13 @@ const deposit = async (req, res) => {
 
         const accountDetails = await Account.findByIdSafe(accountId);
 
-        if (Number(amount) < 0.01) {
-            return res.status(400).json({
-                success: false,
-                message: 'Cannot deposit less than $0.01'
-            });
-        }
+        const validatedAmount = validateAmount(amount);
 
-        accountDetails.balance += Number(amount);
+        accountDetails.balance += validatedAmount;
         await accountDetails.save();
 
-        const newTransaction = await Transaction.create({
-            accountId,
-            type: 'DEPOSIT',
-            amount,
-            description: description || `Deposit: ${amount}`
+        const newTransaction = await createTransactionRecord({
+            accountId, type: 'DEPOSIT', amount: validatedAmount, description
         });
 
         res.status(200).json({
@@ -48,28 +41,14 @@ const withdraw = async (req, res) => {
 
         const accountDetails = await Account.findByIdSafe(accountId);
 
-        if (Number(amount) < 0.01) {
-            return res.status(400).json({
-                success: false,
-                message: 'Minimum withdrawal amount is $0.01'
-            });
-        }
+        const validatedAmount = validateAmount(amount);
+        checkInsufficientBalance(accountDetails.balance, validatedAmount);
 
-        if (accountDetails.balance < Number(amount)) {
-            return res.status(400).json({
-                success: false,
-                message: 'Insufficient balance for this withdrawal.'
-            });
-        }
-
-        accountDetails.balance -= Number(amount);
+        accountDetails.balance -= validatedAmount;
         await accountDetails.save();
 
-        const newTransaction = await Transaction.create({
-            accountId: accountDetails._id,
-            type: 'WITHDRAWAL',
-            amount,
-            description: description || `Withdrawal: ${amount}`
+        const newTransaction = await createTransactionRecord({
+            accountId: accountDetails._id, type: 'WITHDRAWAL', amount: validatedAmount, description
         });
 
         res.status(200).json({
@@ -99,34 +78,21 @@ const transfer = async (req, res) => {
             });
         }
 
-        if (Number(amount) < 0.01) {
-            return res.status(400).json({
-                success: false,
-                message: 'Minimum transfer amount is $0.01'
-            });
-        }
+        const validatedAmount = validateAmount(amount);
 
         const sourceAccount = await Account.findByIdSafe(sourceAccountId);
-        if (sourceAccount.balance < Number(amount)) {
-            return res.status(400).json({
-                success: false,
-                message: 'Insufficient balance in the source account.'
-            });
-        }
+        checkInsufficientBalance(sourceAccount.balance, validatedAmount);
 
         const destinationAccount = await Account.findByIdSafe(toAccountId);
 
-        sourceAccount.balance -= Number(amount);
-        destinationAccount.balance += Number(amount);
+        sourceAccount.balance -= validatedAmount;
+        destinationAccount.balance += validatedAmount;
         await sourceAccount.save();
         await destinationAccount.save();
 
-        const newTransaction = await Transaction.create({
-            accountId: sourceAccount._id,
-            toAccountId: destinationAccount._id,
-            type: 'TRANSFER',
-            amount,
-            description: description || `Transfer to account ${toAccountId}`
+        const newTransaction = await createTransactionRecord({
+            accountId: sourceAccount._id, toAccountId: destinationAccount._id,
+            type: 'TRANSFER', amount: validatedAmount, description
         });
 
         res.status(200).json({
@@ -135,7 +101,7 @@ const transfer = async (req, res) => {
             data: newTransaction
         });
     } catch (error) {
-        console.log("Error transferring money:", error);
+        console.error("Error transferring money:", error);
 
         res.status(error.statusCode || 500).json({
             success: false,
@@ -165,7 +131,7 @@ const viewTransactionHistory = async (req, res) => {
         });
 
     } catch (error) {
-        console.log("Error viewing transaction history:", error);
+        console.error("Error viewing transaction history:", error);
 
         res.status(error.statusCode || 500).json({
             success: false,
