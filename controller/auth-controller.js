@@ -71,12 +71,13 @@ const loginUser = async (req, res) => {
             userId: user._id,
             username: user.username
         }, process.env.JWT_SECRET_KEY, {
-            expiresIn: '5m'
+            expiresIn: '30m'
         });
 
         res.status(200).json({
             success: true,
             message: "Login successful",
+            userId: user._id,
             accessToken
         });
 
