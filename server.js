@@ -14,9 +14,9 @@ await connectDB();
 
 app.use(express.json());
 
-app.use('/accounts', accountRoutes);
-app.use('/accounts', transactionRoutes);
 app.use('/auth', authRoutes);
+app.use('/:userId/accounts', accountRoutes);
+app.use('/:userId/accounts', transactionRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
