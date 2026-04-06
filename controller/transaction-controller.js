@@ -1,13 +1,21 @@
 import Account from "../model/account.js";
 import Transaction from "../model/transaction.js";
-import { validateAmount, checkInsufficientBalance } from '../service/transaction-service.js';
+import { checkInsufficientBalance } from '../service/transaction-service.js';
+import { validateAmount } from '../service/account-service.js';
 
 const deposit = async (req, res) => {
     try {
-        const { id: accountId } = req.params;
+        const { accountId } = req.params;
         const { amount, description } = req.body;
 
-        const accountDetails = await Account.findByIdSafe(accountId);
+        const accountDetails = await Account.findById(accountId);
+
+        if (!accountDetails) {
+            return res.status(404).json({
+                success: false,
+                message: 'Account not found with provided ID.'
+            });
+        }
 
         const validatedAmount = validateAmount(amount);
 
@@ -39,10 +47,17 @@ const deposit = async (req, res) => {
 
 const withdraw = async (req, res) => {
     try {
-        const { id: accountId } = req.params;
+        const { accountId } = req.params;
         const { amount, description } = req.body;
 
-        const accountDetails = await Account.findByIdSafe(accountId);
+        const accountDetails = await Account.findById(accountId);
+
+        if (!accountDetails) {
+            return res.status(404).json({
+                success: false,
+                message: 'Account not found with provided ID.'
+            });
+        }
 
         const validatedAmount = validateAmount(amount);
         checkInsufficientBalance(accountDetails.balance, validatedAmount);
@@ -74,7 +89,7 @@ const withdraw = async (req, res) => {
 
 const transfer = async (req, res) => {
     try {
-        const { id: sourceAccountId } = req.params;
+        const { accountId: sourceAccountId } = req.params;
         const { toAccountId, amount, description } = req.body;
 
         if (sourceAccountId === toAccountId) {
@@ -86,10 +101,25 @@ const transfer = async (req, res) => {
 
         const validatedAmount = validateAmount(amount);
 
-        const sourceAccount = await Account.findByIdSafe(sourceAccountId);
+        const sourceAccount = await Account.findById(sourceAccountId);
+
+        if (!sourceAccount) {
+            return res.status(404).json({
+                success: false,
+                message: 'Source account not found.'
+            });
+        }
+
         checkInsufficientBalance(sourceAccount.balance, validatedAmount);
 
-        const destinationAccount = await Account.findByIdSafe(toAccountId);
+        const destinationAccount = await Account.findById(toAccountId);
+
+        if (!destinationAccount) {
+            return res.status(404).json({
+                success: false,
+                message: 'Destination account not found.'
+            });
+        }
 
         sourceAccount.balance -= validatedAmount;
         destinationAccount.balance += validatedAmount;
@@ -119,10 +149,17 @@ const transfer = async (req, res) => {
     }
 };
 
-const viewTransactionHistory = async (req, res) => {
+const viewTransactionHistoryPerAccount = async (req, res) => {
     try {
-        const { id: accountId } = req.params;
-        await Account.findByIdSafe(accountId);
+        const { accountId } = req.params;
+        const account = await Account.findById(accountId);
+
+        if (!account) {
+            return res.status(404).json({
+                success: false,
+                message: 'Account not found with provided ID.'
+            });
+        }
 
         const transactionHistory = await Transaction.find({
             $or: [
@@ -132,6 +169,13 @@ const viewTransactionHistory = async (req, res) => {
         }).sort({
             createdAt: -1
         });
+
+        if (transactionHistory.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'No transaction history found.'
+            });
+        }
 
         res.status(200).json({
             success: true,
@@ -149,4 +193,4 @@ const viewTransactionHistory = async (req, res) => {
     }
 };
 
-export { deposit, withdraw, transfer, viewTransactionHistory };
+export { deposit, withdraw, transfer, viewTransactionHistoryPerAccount };
