@@ -1,17 +1,18 @@
 import Account from '../model/account.js';
+import { validateAmount } from '../service/account-service.js';
 
 const createAccount = async (req, res) => {
     try {
-        const newAccountFormData = req.body;
+        const { userId } = req.params;
+        const { type, balance } = req.body;
 
-        if (!newAccountFormData || Object.keys(newAccountFormData).length === 0) {
-            return res.status(400).json({
-                success: false,
-                message: "Account details are required."
-            });
-        }
+        const validatedBalance = validateAmount(balance, 0, 'Initial balance is required and cannot be negative.');
 
-        const newAccount = await Account.create(newAccountFormData);
+        const newAccount = await Account.create({
+            userId,
+            type,
+            balance: validatedBalance
+        });
 
         res.status(201).json({
             success: true,
@@ -21,22 +22,26 @@ const createAccount = async (req, res) => {
 
     } catch (error) {
         console.error("Error creating account:", error);
-        res.status(500).json({
+        res.status(error.statusCode || 500).json({
             success: false,
-            message: "Error creating new account."
-        })
+            message: error.message || "Error creating new account."
+        });
     }
 }
 
-const getAllAccounts = async (_req, res) => {
+const getAllAccounts = async (req, res) => {
     try {
-        const allAccounts = await Account.find();
+        const { userId } = req.params;
 
-        if (allAccounts?.length > 0) {
+        const accounts = userId
+            ? await Account.find({ userId })
+            : await Account.find();
+
+        if (accounts?.length > 0) {
             res.status(200).json({
                 success: true,
                 message: 'List of Accounts fetched successfully',
-                data: allAccounts
+                data: accounts
             });
         } else {
             res.status(404).json({
@@ -56,11 +61,20 @@ const getAllAccounts = async (_req, res) => {
 
 const getAccountById = async (req, res) => {
     try {
-        const getCurrentAccountID = req.params.id;
-        const accountDetails = await Account.findByIdSafe(getCurrentAccountID);
+        const { userId, accountId } = req.params;
+
+        const accountDetails = await Account.findById(accountId);
+
+        if (!accountDetails) {
+            return res.status(404).json({
+                success: false,
+                message: 'Account not found.'
+            });
+        }
 
         res.status(200).json({
             success: true,
+            userId,
             data: accountDetails
         });
 
@@ -69,18 +83,21 @@ const getAccountById = async (req, res) => {
 
         res.status(error.statusCode || 500).json({
             success: false,
-            message: error.message || 'Something went wrong! Please try again.'
+            message: 'Something went wrong! Please try again.'
         });
     }
 };
 
 const updateAccount = async (req, res) => {
     try {
-        const updatedAccountFormData = req.body;
-        const currentAccountID = req.params.id;
-        const updatedAccount = await Account.findByIdAndUpdate(currentAccountID, updatedAccountFormData, {
-            returnDocument: 'after'
-        });
+        const { type, balance } = req.body;
+        const { accountId } = req.params;
+        const updatedAccount = await Account.findByIdAndUpdate(accountId, {
+            type,
+            balance
+        },
+            { returnDocument: 'after' }
+        );
 
         if (!updatedAccount) {
             return res.status(404).json({
@@ -92,22 +109,22 @@ const updateAccount = async (req, res) => {
                 success: true,
                 message: 'Account updated successfully',
                 data: updatedAccount
-            })
+            });
         }
 
     } catch (error) {
         console.error("Error updating account:", error);
-        res.status(500).json({
+        res.status(error.statusCode || 500).json({
             success: false,
-            message: 'Something went wrong! Please try again.'
-        })
+            message: error.message || 'Something went wrong! Please try again.'
+        });
     }
 };
 
 const deleteAccount = async (req, res) => {
     try {
-        const getCurrentAccountId = req.params.id;
-        const deletedAccount = await Account.findByIdAndDelete(getCurrentAccountId);
+        const { accountId } = req.params;
+        const deletedAccount = await Account.findByIdAndDelete(accountId);
 
         if (!deletedAccount) {
             return res.status(404).json({
@@ -118,7 +135,7 @@ const deleteAccount = async (req, res) => {
             res.status(200).json({
                 success: true,
                 data: deletedAccount
-            })
+            });
         }
     } catch (error) {
         console.error("Error deleting account:", error);
