@@ -15,6 +15,15 @@ Understand and Use a Relational Database in MySQL and MySQL Workbench
 - Data Modification Language (DML)
 - Transaction Control Language (TCL)
 
+### Prerequisites
+
+- **MySQL** ([MySQL Workbench](https://www.mysql.com/products/workbench/) recommended)
+
+### Table Creation and User Stories
+
+- Run `hr_sales_tables_MySQL.sql` to set up the database and tables
+- Run `Duncan_Patel_Sprint3_User_Stories.sql` to execute user stories and see the results
+
 ## Node.js, Express, and MongoDB
 
 Node.js, Express, and MongoDB used to create a RESTful API for a basic banking system featuring:
@@ -33,18 +42,17 @@ Node.js, Express, and MongoDB used to create a RESTful API for a basic banking s
   - Input validation 
   - Basic authentication (optional) 
 
-## Setup Instructions
+### Setup Instructions
 
-### Prerequisites
+#### Prerequisites
 
 Before running this project, ensure you have the following installed on your local machine:
 
 - **Node.js** and **npm** ([Node.js](https://nodejs.org/))
-- **MySQL** ([MySQL Workbench](https://www.mysql.com/products/workbench/) recommended)
 - **MongoDB** ([MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or local installation)
 - **Postman** ([Postman](https://www.postman.com/)) or a similar tool for testing API endpoints
 
-### Installation Steps
+#### Installation Steps
 
 1. **Clone the repository**
 
