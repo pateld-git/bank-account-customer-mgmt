@@ -1,12 +1,13 @@
 import express from 'express';
 import { createAccount, getAllAccounts, getAccountById, updateAccount, deleteAccount } from '../controller/account-controller.js';
+import authMiddleware from '../middleware/auth-middleware.js';
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
-router.post('/', createAccount);
-router.get('/', getAllAccounts);
-router.get('/:id', getAccountById);
-router.put('/:id', updateAccount);
-router.delete('/:id', deleteAccount);
+router.post('/', authMiddleware, createAccount);
+router.get('/', authMiddleware, getAllAccounts);
+router.get('/:accountId', authMiddleware, getAccountById);
+router.put('/:accountId', authMiddleware, updateAccount);
+router.delete('/:accountId', authMiddleware, deleteAccount);
 
 export default router;

@@ -1,11 +1,12 @@
 import express from 'express';
-import { deposit, withdraw, transfer, viewTransactionHistory } from '../controller/transaction-controller.js';
+import authMiddleware from '../middleware/auth-middleware.js';
+import { deposit, withdraw, transfer, viewTransactionHistoryPerAccount } from '../controller/transaction-controller.js';
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
-router.post('/:id/deposit', deposit);
-router.post('/:id/withdraw', withdraw);
-router.post('/:id/transfer', transfer);
-router.get('/:id/transactions', viewTransactionHistory);
+router.post('/:accountId/deposit', authMiddleware, deposit);
+router.post('/:accountId/withdraw', authMiddleware, withdraw);
+router.post('/:accountId/transfer', authMiddleware, transfer);
+router.get('/:accountId/transactions', authMiddleware, viewTransactionHistoryPerAccount);
 
 export default router;
