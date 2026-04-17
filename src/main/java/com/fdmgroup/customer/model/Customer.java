@@ -39,7 +39,7 @@ import lombok.experimental.SuperBuilder;
 @Schema(description = "Main entity representing a customer and their linked address")
 public abstract class Customer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Schema(accessMode = Schema.AccessMode.READ_ONLY, description = "Unique identifier of the customer")
 	@Column(name = "CUSTOMER_ID")
 	private long customerId;

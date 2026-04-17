@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Schema(description = "Represents a physical address, Geocoder populates City and Province using Postal Code")
 public class Address {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Schema(accessMode = Schema.AccessMode.READ_ONLY, description = "Unique identifier of the address")
 	private Long addressId;
 
