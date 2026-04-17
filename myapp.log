@@ -1,0 +1,211 @@
+2026-04-17T05:54:03.125-07:00  INFO 3800 --- [bank-account-customer-mgmt] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2026-04-17T05:54:03.149-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-17T05:54:03.163-07:00  INFO 3800 --- [bank-account-customer-mgmt] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-17T05:54:03.176-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:54:03.184-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-17T05:54:03.186-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-17T05:54:03.365-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Starting BankAccountCustomerMgmtApplication using Java 25.0.2 with PID 3800 (F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt\target\classes started by dunca in F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt)
+2026-04-17T05:54:03.365-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-17T05:54:03.909-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-17T05:54:03.927-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 1 JPA repository interface.
+2026-04-17T05:54:04.166-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-17T05:54:04.174-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-17T05:54:04.175-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-17T05:54:04.287-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 913 ms
+2026-04-17T05:54:04.592-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-17T05:54:04.760-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-17T05:54:04.763-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-04-17T05:54:04.822-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn229: url=jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB user=SA
+2026-04-17T05:54:04.823-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-04-17T05:54:04.826-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: ACCOUNT-CUSTOMER-DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-17T05:54:05.110-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-17T05:54:05.120-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:54:05.287-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-17T05:54:05.516-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB'
+2026-04-17T05:54:05.544-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-04-17T05:54:05.578-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-17T05:54:05.586-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Started BankAccountCustomerMgmtApplication in 2.291 seconds (process running for 35151.729)
+2026-04-17T05:54:05.588-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-17T05:54:05.588-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-17T05:54:05.590-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-04-17T05:56:56.977-07:00  INFO 3800 --- [bank-account-customer-mgmt] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2026-04-17T05:56:56.978-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-6] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-17T05:56:56.987-07:00  INFO 3800 --- [bank-account-customer-mgmt] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-17T05:56:56.991-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:56:56.992-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-04-17T05:56:57.017-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-04-17T05:56:57.109-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Starting BankAccountCustomerMgmtApplication using Java 25.0.2 with PID 3800 (F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt\target\classes started by dunca in F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt)
+2026-04-17T05:56:57.109-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-17T05:56:57.465-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-17T05:56:57.480-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2026-04-17T05:56:57.614-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-17T05:56:57.615-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-17T05:56:57.615-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-17T05:56:57.662-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 551 ms
+2026-04-17T05:56:57.725-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-17T05:56:57.762-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-17T05:56:57.763-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-04-17T05:56:57.790-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn239: url=jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB user=SA
+2026-04-17T05:56:57.791-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-04-17T05:56:57.791-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: ACCOUNT-CUSTOMER-DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-17T05:56:57.912-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-17T05:56:57.919-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:56:58.025-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-17T05:56:58.201-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB'
+2026-04-17T05:56:58.224-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-04-17T05:56:58.246-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-17T05:56:58.252-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Started BankAccountCustomerMgmtApplication in 1.174 seconds (process running for 35324.396)
+2026-04-17T05:56:58.254-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-17T05:56:58.254-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-17T05:56:58.256-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-04-17T05:57:35.811-07:00  INFO 3800 --- [bank-account-customer-mgmt] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2026-04-17T05:57:35.812-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-10] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-17T05:57:35.821-07:00  INFO 3800 --- [bank-account-customer-mgmt] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-17T05:57:35.823-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-10] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:57:35.825-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-04-17T05:57:36.033-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2026-04-17T05:57:36.121-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Starting BankAccountCustomerMgmtApplication using Java 25.0.2 with PID 3800 (F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt\target\classes started by dunca in F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt)
+2026-04-17T05:57:36.122-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-17T05:57:36.522-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-17T05:57:36.538-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
+2026-04-17T05:57:36.705-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-17T05:57:36.706-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-17T05:57:36.706-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-17T05:57:36.768-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 643 ms
+2026-04-17T05:57:36.866-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-17T05:57:36.923-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-17T05:57:36.924-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-04-17T05:57:36.949-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn249: url=jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB user=SA
+2026-04-17T05:57:36.949-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-04-17T05:57:36.950-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: ACCOUNT-CUSTOMER-DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-17T05:57:37.066-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-17T05:57:37.074-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:57:37.205-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-17T05:57:37.413-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB'
+2026-04-17T05:57:37.438-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-04-17T05:57:37.469-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-17T05:57:37.473-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Started BankAccountCustomerMgmtApplication in 1.384 seconds (process running for 35363.617)
+2026-04-17T05:57:37.475-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-17T05:57:37.475-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-17T05:57:37.476-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-04-17T05:57:47.881-07:00  INFO 3800 --- [bank-account-customer-mgmt] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2026-04-17T05:57:47.882-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-14] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-17T05:57:47.891-07:00  INFO 3800 --- [bank-account-customer-mgmt] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-17T05:57:47.894-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-14] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:57:47.895-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2026-04-17T05:57:47.920-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2026-04-17T05:57:48.015-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Starting BankAccountCustomerMgmtApplication using Java 25.0.2 with PID 3800 (F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt\target\classes started by dunca in F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt)
+2026-04-17T05:57:48.015-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-17T05:57:48.330-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-17T05:57:48.341-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 1 JPA repository interface.
+2026-04-17T05:57:48.472-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-17T05:57:48.473-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-17T05:57:48.473-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-17T05:57:48.529-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 512 ms
+2026-04-17T05:57:48.603-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-17T05:57:48.638-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-17T05:57:48.639-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-04-17T05:57:48.656-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn259: url=jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB user=SA
+2026-04-17T05:57:48.656-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2026-04-17T05:57:48.657-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: ACCOUNT-CUSTOMER-DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-17T05:57:48.748-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-17T05:57:48.755-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:57:48.856-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-17T05:57:49.028-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB'
+2026-04-17T05:57:49.050-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-04-17T05:57:49.072-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-17T05:57:49.077-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Started BankAccountCustomerMgmtApplication in 1.093 seconds (process running for 35375.221)
+2026-04-17T05:57:49.078-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-17T05:57:49.078-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-17T05:57:49.079-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-04-17T05:58:15.580-07:00  INFO 3800 --- [bank-account-customer-mgmt] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2026-04-17T05:58:15.581-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-18] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-17T05:58:15.590-07:00  INFO 3800 --- [bank-account-customer-mgmt] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-17T05:58:15.594-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-18] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:58:15.595-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2026-04-17T05:58:15.801-07:00  INFO 3800 --- [bank-account-customer-mgmt] [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2026-04-17T05:58:15.905-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Starting BankAccountCustomerMgmtApplication using Java 25.0.2 with PID 3800 (F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt\target\classes started by dunca in F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt)
+2026-04-17T05:58:15.906-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-17T05:58:16.275-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-17T05:58:16.290-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
+2026-04-17T05:58:16.468-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-17T05:58:16.470-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-17T05:58:16.470-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-17T05:58:16.547-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 637 ms
+2026-04-17T05:58:16.611-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-17T05:58:16.649-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-17T05:58:16.650-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-04-17T05:58:16.670-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn269: url=jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB user=SA
+2026-04-17T05:58:16.670-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2026-04-17T05:58:16.671-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: ACCOUNT-CUSTOMER-DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-17T05:58:16.755-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-17T05:58:16.761-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T05:58:16.858-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-17T05:58:17.085-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB'
+2026-04-17T05:58:17.103-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-04-17T05:58:17.122-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-17T05:58:17.127-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] c.f.BankAccountCustomerMgmtApplication   : Started BankAccountCustomerMgmtApplication in 1.253 seconds (process running for 35403.27)
+2026-04-17T05:58:17.128-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-17T05:58:17.128-07:00  WARN 3800 --- [bank-account-customer-mgmt] [restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-17T05:58:17.129-07:00  INFO 3800 --- [bank-account-customer-mgmt] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-04-17T06:06:34.846-07:00  INFO 3800 --- [bank-account-customer-mgmt] [RMI TCP Connection(604)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2026-04-17T06:06:34.848-07:00  INFO 3800 --- [bank-account-customer-mgmt] [RMI TCP Connection(604)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-17T06:06:34.859-07:00  INFO 3800 --- [bank-account-customer-mgmt] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-04-17T06:06:34.863-07:00  INFO 3800 --- [bank-account-customer-mgmt] [RMI TCP Connection(604)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T06:06:34.865-07:00  INFO 3800 --- [bank-account-customer-mgmt] [RMI TCP Connection(604)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2026-04-17T06:06:34.897-07:00  INFO 3800 --- [bank-account-customer-mgmt] [RMI TCP Connection(604)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
