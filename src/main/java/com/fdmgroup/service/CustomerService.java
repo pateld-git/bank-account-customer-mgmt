@@ -26,6 +26,7 @@ public class CustomerService {
 	private final CustomerRepository customerRepo;
 
 	public List<Customer> getAllCustomers() {
+		log.info("Fetching all customers");
 		return customerRepo.findAll();
 	}
 
@@ -62,7 +63,6 @@ public class CustomerService {
 	}
 
 	public Customer updateById(long customerId, CustomerDTO dto) throws ArgNotFoundException {
-		log.info("Attempting to update a customer with id: {}", customerId);
 		Customer existingCustomer = customerRepo.findById(customerId)
 				.orElseThrow(() -> new ArgNotFoundException("Customer not found with id: " + customerId));
 
@@ -84,7 +84,6 @@ public class CustomerService {
 
 	public void deleteById(long customerId) {
 		log.info("Deleting customer with id: {}", customerId);
-		// Use findById instead of existsById to avoid double database call
 		Customer customer = customerRepo.findById(customerId)
 				.orElseThrow(() -> new ArgNotFoundException("Customer not found with provided id: " + customerId));
 		customerRepo.delete(customer);

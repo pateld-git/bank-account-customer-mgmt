@@ -21,15 +21,17 @@ public class GeocoderService {
 	private final WebClient geocoderWebClient;
 
 	public CustomerDTO getPostalCodeProvinceFromGeocoder(CustomerDTO customerDTO) {
+		log.info("Attempting to create new customer: {}", customerDTO.getName());
 		String postalCode = customerDTO.getAddress().getPostalCode();
-		log.info("Finding province and city from postal code: {}", postalCode);
 
 		GeocoderResponse geoResponse = fetchGeocodePostalCodeProcince(customerDTO.getAddress().getPostalCode());
+		log.info("Found city and province for: {}", postalCode);
 
 		return insertPostalCodeProcinceInCustomer(customerDTO, geoResponse);
 	}
 
 	private GeocoderResponse fetchGeocodePostalCodeProcince(String postalCode) {
+		log.info("Finding province and city from postal code: {}", postalCode);
 		return geocoderWebClient.get()
 				.uri(uri -> uri.path("/")
 						.queryParam("locate", postalCode)
@@ -39,7 +41,7 @@ public class GeocoderService {
 				.onStatus(HttpStatusCode::is5xxServerError, _ -> Mono.error(
 						new GeocoderException("External API error for postal code: " + postalCode)))
 				.onStatus(HttpStatusCode::is4xxClientError, _ -> Mono.error(
-	                    new ArgNotFoundException("Invalid request or postal code not found: " + postalCode)))
+						new ArgNotFoundException("Invalid request or postal code not found: " + postalCode)))
 				.bodyToMono(GeocoderResponse.class)
 				.block();
 	}

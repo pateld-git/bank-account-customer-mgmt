@@ -31,17 +31,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AccountController {
 	private AccountService accountService;
-	
+
 	@Operation(summary = "Retrieves a list of all registered accounts")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Successfully retrieved list")
 	})
 	@GetMapping
 	public ResponseEntity<List<Account>> getAllAccounts() {
-		log.info("Fetching all accounts");
 		return ResponseEntity.ok(accountService.getAllAccounts());
 	}
-	
+
 	@Operation(summary = "Retrieves a specific account by their ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Account found"),
@@ -49,7 +48,7 @@ public class AccountController {
 	})
 	@GetMapping("/search")
 	public ResponseEntity<List<Account>> getAccountsByCity(@RequestParam String city) {
-	    return ResponseEntity.ok(accountService.getAccountsByCity(city));
+		return ResponseEntity.ok(accountService.getAccountsByCity(city));
 	}
 
 	@Operation(summary = "Retrieves a specific account by their ID")
@@ -59,10 +58,9 @@ public class AccountController {
 	})
 	@GetMapping("/{id}")
 	public ResponseEntity<Account> getAccountById(@PathVariable("id") long accountId) {
-		log.info("Fetching account with ID: {}", accountId);
 		return ResponseEntity.ok(accountService.getAccountById(accountId));
 	}
-	
+
 	@Operation(summary = "Creates a new account linked to an existing customer")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "201", description = "Account successfully created"),
@@ -73,7 +71,6 @@ public class AccountController {
 	public ResponseEntity<Account> createAccount(@PathVariable long customerId,
 			@Valid @RequestBody AccountDTO accountDto) {
 
-		log.info("Creating {} account for customer ID: {}", accountDto.getType(), customerId);
 		Account createdAccount = accountService.addAccount(customerId, accountDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdAccount);
 	}
@@ -87,12 +84,10 @@ public class AccountController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Account> updateAccount(@PathVariable("id") long accountId,
 			@Valid @RequestBody AccountDTO accountDto) {
-
-		log.info("Updating account ID: {}", accountId);
 		Account updatedAccount = accountService.updateAccount(accountId, accountDto);
 		return ResponseEntity.ok(updatedAccount);
 	}
-	
+
 	@Operation(summary = "Deletes an account by ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "204", description = "Account deleted successfully"),
@@ -100,7 +95,6 @@ public class AccountController {
 	})
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteAccount(@PathVariable("id") long accountId) {
-		log.info("Deleting account ID: {}", accountId);
 		accountService.deleteAccount(accountId);
 		return ResponseEntity.noContent().build();
 	}

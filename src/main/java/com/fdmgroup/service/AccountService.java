@@ -28,15 +28,18 @@ public class AccountService {
 	private CustomerRepository customerRepository;
 
 	public List<Account> getAllAccounts() {
+		log.info("Fetching all accounts");
 		return accountRepo.findAll();
 	}
 
 	public Account getAccountById(long accountId) {
+		log.info("Fetching account with id {}", accountId);
 		return accountRepo.findById(accountId)
 				.orElseThrow(() -> new ArgNotFoundException("Account not found with ID: " + accountId));
 	}
 
 	public List<Account> getAccountsByCity(String city) {
+		log.info("Fetching accounts of customers from city {}", city);
 		List<Account> accounts = accountRepo.findAccountsByCustomerCity(city);
 
 		if (accounts.isEmpty()) {
@@ -48,8 +51,11 @@ public class AccountService {
 	}
 
 	public Account addAccount(long customerId, AccountDTO accountDTO) {
+		log.info("Checking if customer with ID {} exists", customerId);
 		Customer customer = customerRepository.findById(customerId)
 				.orElseThrow(() -> new ArgNotFoundException("Customer not found with ID: " + customerId));
+
+		log.info("Creating new {} account", accountDTO.getType());
 
 		Account account;
 		if ("savings".equalsIgnoreCase(accountDTO.getType())) {
@@ -73,8 +79,11 @@ public class AccountService {
 	}
 
 	public Account updateAccount(long accountId, AccountDTO dto) {
+		log.info("Checking if account with ID {} exists", accountId);
 		Account existingAccount = accountRepo.findById(accountId)
 				.orElseThrow(() -> new ArgNotFoundException("Update failed: Account not found with ID: " + accountId));
+
+		log.info("Updating account {}", accountId);
 
 		existingAccount.setBalance(dto.getBalance());
 
@@ -100,6 +109,7 @@ public class AccountService {
 	}
 
 	public void deleteAccount(long accountId) {
+		log.info("Deleting account {}", accountId);
 		Account account = accountRepo.findById(accountId)
 				.orElseThrow(() -> new ArgNotFoundException("Customer not found with provided id: " + accountId));
 		accountRepo.delete(account);

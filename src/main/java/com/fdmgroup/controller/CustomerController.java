@@ -43,8 +43,8 @@ public class CustomerController {
 			@ApiResponse(responseCode = "500", description = "Internal geocoder service failure")
 	})
 	@PostMapping
-	public ResponseEntity<Customer> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) throws GeocoderException {
-		log.info("Creating new customer: {}", customerDTO.getName());
+	public ResponseEntity<Customer> createCustomer(@Valid @RequestBody CustomerDTO customerDTO)
+			throws GeocoderException {
 		customerDTO = geocoderService.getPostalCodeProvinceFromGeocoder(customerDTO);
 		Customer createdCustomer = customerService.addCustomer(customerDTO);
 
@@ -52,7 +52,6 @@ public class CustomerController {
 				.path("/{id}")
 				.buildAndExpand(createdCustomer.getCustomerId())
 				.toUri();
-
 		return ResponseEntity.created(locationUri).body(createdCustomer);
 	}
 
@@ -72,9 +71,10 @@ public class CustomerController {
 	})
 	@GetMapping("/{customerId}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable long customerId) {
+		log.info("Finding customer by id: {}", customerId);
 		return ResponseEntity.ok(customerService.getCustomerById(customerId));
 	}
-	
+
 	@Operation(summary = "Updates an existing customer's details by ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Customer updated successfully"),
@@ -87,7 +87,7 @@ public class CustomerController {
 		log.info("Updating Customer: {} with ID: {}", customerDTO.getName(), customerId);
 		return ResponseEntity.ok(customerService.updateById(customerId, customerDTO));
 	}
-	
+
 	@Operation(summary = "Deletes a customer, their address, and all associated accounts by the account ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "204", description = "Customer deleted successfully"),
