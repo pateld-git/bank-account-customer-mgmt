@@ -1,5 +1,6 @@
-package com.fdmgroup.address.model;
+package com.fdmgroup.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -18,5 +19,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class SavingsAccount extends Account {
 	@Column(name = "INTEREST_RATE", nullable = false)
+	@Schema(description = "Annual interest rate percentage")
 	private double interestRate;
 }

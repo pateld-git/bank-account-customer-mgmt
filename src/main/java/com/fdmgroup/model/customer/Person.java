@@ -1,4 +1,4 @@
-package com.fdmgroup.customer.model;
+package com.fdmgroup.model.customer;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -8,10 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@DiscriminatorValue("COMPANY")
+@DiscriminatorValue("PERSON")
 @Data
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class Company extends Customer {
+public class Person extends Customer {
+	
 }

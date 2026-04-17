@@ -1,4 +1,4 @@
-package com.fdmgroup.customer.model;
+package com.fdmgroup.model.customer;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -13,12 +13,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
+@Accessors(chain = true)
 @Schema(description = "Represents a physical address, Geocoder populates City and Province using Postal Code")
 public class Address {
 	@Id
@@ -30,18 +32,20 @@ public class Address {
 	@Schema(example = "123", description = "Street number of the location")
 	private String streetNumber;
 
-	@Schema(description = "City name - Automatically populated from postal code", 
-	        accessMode = Schema.AccessMode.READ_ONLY, example = "Toronto")
+	@Schema(description = "City name - Automatically populated from postal code",
+			accessMode = Schema.AccessMode.READ_ONLY,
+			example = "Toronto")
 	private String city;
 
-	@Schema(description = "Province code - Automatically populated from postal code", 
-	        accessMode = Schema.AccessMode.READ_ONLY, example = "ON")
+	@Schema(description = "Province code - Automatically populated from postal code",
+			accessMode = Schema.AccessMode.READ_ONLY,
+			example = "ON")
 	private String province;
 
 	@NotBlank(message = "Postal Code is required")
 	@Schema(example = "M5V2H1", description = "North American postal code used for Geocoder. Canada used in example.")
 	private String postalCode;
-	
+
 	@OneToOne(mappedBy = "address")
 	@JsonBackReference
 	@Schema(hidden = true)

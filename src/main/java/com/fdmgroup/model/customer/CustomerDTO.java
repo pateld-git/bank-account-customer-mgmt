@@ -1,4 +1,4 @@
-package com.fdmgroup.customer.model;
+package com.fdmgroup.model.customer;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;

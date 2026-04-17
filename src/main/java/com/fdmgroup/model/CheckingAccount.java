@@ -1,5 +1,6 @@
-package com.fdmgroup.address.model;
+package com.fdmgroup.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -18,5 +19,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CheckingAccount extends Account {
 	@Column(name = "NEXT_CHECK_NUMBER", nullable = false)
-    private int nextCheckNumber;
+	@Schema(description = "The next number of the check from the checkbook")
+	private int nextCheckNumber;
 }

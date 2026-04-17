@@ -1,4 +1,4 @@
-package com.fdmgroup.customer.exception;
+package com.fdmgroup.exception;
 
 public class GeocoderException extends RuntimeException {
 

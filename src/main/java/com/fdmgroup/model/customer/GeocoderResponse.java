@@ -1,4 +1,4 @@
-package com.fdmgroup.customer.model;
+package com.fdmgroup.model.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

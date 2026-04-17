@@ -1,9 +1,11 @@
-package com.fdmgroup.address.model;
+package com.fdmgroup.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fdmgroup.customer.model.Customer;
+import com.fdmgroup.model.customer.Customer;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -28,19 +30,23 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = SavingsAccount.class, name = "SAVINGS"),
-    @JsonSubTypes.Type(value = CheckingAccount.class, name = "CHECKING")
+		@JsonSubTypes.Type(value = SavingsAccount.class, name = "SAVINGS"),
+		@JsonSubTypes.Type(value = CheckingAccount.class, name = "CHECKING")
 })
 public abstract class Account {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ACCOUNT_ID")
-    private long accountId;
-    
-	@Column(name = "BALANCE", nullable = false)
-    private double balance;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Schema(description = "Unique identifier of the account")
+	@Column(name = "ACCOUNT_ID")
+	private long accountId;
 
-    @ManyToOne
-    @JoinColumn(name = "FK_CUST_ID", nullable = false)
-    private Customer customer;
+	@Column(name = "BALANCE", nullable = false)
+	@Schema(description = "Current balance in the account")
+	private double balance;
+
+	@ManyToOne
+	@JoinColumn(name = "FK_CUST_ID", nullable = false)
+	@Schema(description = "The customer who owns this account")
+	@JsonBackReference
+	private Customer customer;
 }
