@@ -6523,3 +6523,36 @@ Caused by: java.lang.Error: Unresolved compilation problem:
 2026-04-17T12:24:14.914-07:00  INFO 12164 --- [bank-account-customer-mgmt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-04-17T12:24:14.917-07:00  INFO 12164 --- [bank-account-customer-mgmt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-04-17T12:24:14.920-07:00  INFO 12164 --- [bank-account-customer-mgmt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-17T13:15:22.690-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] .BankAccountCustomerMgmtApplicationTests : Starting BankAccountCustomerMgmtApplicationTests using Java 25.0.2 with PID 3968 (started by dunca in F:\FDMGroup\sts-5.1.1.RELEASE\workspace\bank-account-customer-mgmt)
+2026-04-17T13:15:22.693-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] .BankAccountCustomerMgmtApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2026-04-17T13:15:24.045-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-17T13:15:24.148-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73 ms. Found 2 JPA repository interfaces.
+2026-04-17T13:15:24.906-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-17T13:15:24.993-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-17T13:15:25.443-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-17T13:15:25.497-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-17T13:15:26.083-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB user=SA
+2026-04-17T13:15:26.085-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-17T13:15:26.160-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:F:/FDMGroup/Temp/Spring-Database/Account-Customer-DB]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: ACCOUNT-CUSTOMER-DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-17T13:15:27.278-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-17T13:15:27.350-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T13:15:27.464-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-17T13:15:28.632-07:00  WARN 3968 --- [bank-account-customer-mgmt] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-17T13:15:29.454-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-04-17T13:15:29.544-07:00  INFO 3968 --- [bank-account-customer-mgmt] [main] .BankAccountCustomerMgmtApplicationTests : Started BankAccountCustomerMgmtApplicationTests in 7.186 seconds (process running for 14.222)
+2026-04-17T13:15:29.658-07:00  WARN 3968 --- [bank-account-customer-mgmt] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-17T13:15:29.658-07:00  WARN 3968 --- [bank-account-customer-mgmt] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-17T13:15:29.708-07:00  INFO 3968 --- [bank-account-customer-mgmt] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-17T13:15:29.712-07:00  INFO 3968 --- [bank-account-customer-mgmt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-17T13:15:29.715-07:00  INFO 3968 --- [bank-account-customer-mgmt] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
