@@ -1,5 +1,7 @@
 package com.fdmgroup.address.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fdmgroup.customer.model.Customer;
 
 import jakarta.persistence.Column;
@@ -24,16 +26,21 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = SavingsAccount.class, name = "SAVINGS"),
+    @JsonSubTypes.Type(value = CheckingAccount.class, name = "CHECKING")
+})
 public abstract class Account {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ACCOUNT_ID")
-    private Long accountId;
+    private long accountId;
     
 	@Column(name = "BALANCE", nullable = false)
     private double balance;
 
     @ManyToOne
-    @JoinColumn(name = "FK_CUST_ID")
+    @JoinColumn(name = "FK_CUST_ID", nullable = false)
     private Customer customer;
 }
