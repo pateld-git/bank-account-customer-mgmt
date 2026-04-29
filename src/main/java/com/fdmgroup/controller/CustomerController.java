@@ -28,7 +28,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("api/v1/customers")
+@RequestMapping("api/customers")
 @AllArgsConstructor
 @Slf4j
 public class CustomerController {

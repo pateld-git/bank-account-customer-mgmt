@@ -26,7 +26,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("api/v1/accounts")
+@RequestMapping("api/accounts")
 @AllArgsConstructor
 @Slf4j
 public class AccountController {
@@ -41,7 +41,7 @@ public class AccountController {
 		return ResponseEntity.ok(accountService.getAllAccounts());
 	}
 
-	@Operation(summary = "Retrieves a specific account by their ID")
+	@Operation(summary = "Retrieves a accounts from a user from a specific city")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Account found"),
 			@ApiResponse(responseCode = "404", description = "No accounts registered to customers in specified city")
