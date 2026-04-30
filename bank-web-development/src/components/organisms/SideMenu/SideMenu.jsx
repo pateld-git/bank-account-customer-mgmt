@@ -9,10 +9,14 @@ import "./SideMenu.css";
  * It includes a SearchBar and a NavGroup with navigation links.
  */
 const SideMenu = ({ links }) => {
+  const onSearch = (query) => {
+    console.log("Search query:", query);
+  };
+
   return (
     <Menu className="side-menu">
       <div className="side-menu-header">
-        <SearchBar />
+        <SearchBar onSearch={onSearch} />
       </div>
       <div className="side-menu-nav">
         <NavGroup items={links} className="vertical-nav" />
