@@ -1,0 +1,51 @@
+/* Position and sizing of burger button */
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 30px;
+    top: 40px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+    background: var(--link-color);
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+    background: var(--hover-link-color);
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+    display: none;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+
+/* General sidebar styles */
+.bm-menu {
+    background: var(--primary-background);
+    padding: 0;
+    overflow-y: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.bm-menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Morph shape necessary with bubble or elastic */
+
+/* Wrapper for item list */
+.bm-item-list {
+    padding: 1em;
+    font-size: 30px;
+    font-weight: bold;
+    ;
+
+}
