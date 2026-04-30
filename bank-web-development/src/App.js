@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ROUTES } from "./constants/Routes";
 import './App.css';
 import Update from './components/pages/Update/Update';
+import CustomerAccountPage from './components/pages/CustomerAccounts/CustomerAccountPage';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         ))}
         <Route path="/home" element={ROUTES.HOME.element} />
         <Route path="/update/:type/:id" element={<Update />} />
+        <Route path="/customers/:id/accounts" element={<CustomerAccountPage />} />
+
         <Route path="*" element={<Navigate to={ROUTES.HOME.path} replace />} />
       </Routes>
     </div >
