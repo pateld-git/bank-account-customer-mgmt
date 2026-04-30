@@ -46,7 +46,7 @@ export const getCustomerColumns = (onViewAccounts, onUpdate, onDelete) => [
     },
 ];
 
-export const getAccountColumns = (onDelete, onUpdate) => [
+export const getAccountColumns = (onUpdate, onDelete) => [
     { key: "accountId", label: "ID" },
     { key: "type", label: "Entity Type" },
     { key: "balance", label: "Balance" },
