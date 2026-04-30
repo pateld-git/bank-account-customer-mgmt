@@ -1,30 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import InputField from "../../atoms/InputField/InputField";
 import Button from "../../atoms/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./SearchBar.css";
 
-/**
- * SearchBar molecule component.
- * Combines an InputField and a Button for a unified search interface.
- */
-const SearchBar = () => {
-  const handleSearch = () => {
-    console.log("Search button clicked");
+const SearchBar = ({
+  placeholder = "Search...",
+  inputType = "text",
+  onSearch,
+  min,
+  required = false,
+  preventRefresh = true,
+}) => {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (preventRefresh) {
+      preventRefresh = true;
+    }
+    if (query.trim() !== "") {
+      onSearch(query);
+    }
   };
 
   return (
-    <div className="searchbar-container">
+    <form className="searchbar-container" onSubmit={handleSearch}>
       <InputField
-        type="text"
+        type={inputType}
         className="custom-input"
-        placeholder="Search..."
+        placeholder={placeholder}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        min={min}
+        required={required}
       />
-      <Button className="custom-button" onClick={handleSearch}>
+      <Button type="submit" className="custom-button">
         <FontAwesomeIcon icon={faSearch} />
       </Button>
-    </div>
+    </form>
   );
 };
 
