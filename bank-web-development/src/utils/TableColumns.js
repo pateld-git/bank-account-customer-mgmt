@@ -1,6 +1,6 @@
 import ActionGroup from "../components/molecules/ActionGroup/ActionGroup";
 
-export const getCustomerColumns = (onDelete, onUpdate) => [
+export const getCustomerColumns = (onViewAccounts, onUpdate, onDelete) => [
     { key: "customerId", label: "ID" },
     { key: "name", label: "Full Name" },
     { key: "type", label: "Entity Type" },
@@ -25,7 +25,11 @@ export const getCustomerColumns = (onDelete, onUpdate) => [
         render: (row) => (
             <ActionGroup
                 actions={[
-                    // Use the passed-in handlers here
+                    {
+                        label: "Accounts",
+                        className: "btn-view",
+                        onClick: () => onViewAccounts(row.customerId)
+                    },
                     {
                         label: "UPDATE",
                         className: "btn-update",
@@ -35,6 +39,34 @@ export const getCustomerColumns = (onDelete, onUpdate) => [
                         label: "DELETE",
                         className: "btn-delete",
                         onClick: () => onDelete(row.customerId)
+                    },
+                ]}
+            />
+        ),
+    },
+];
+
+export const getAccountColumns = (onDelete, onUpdate) => [
+    { key: "accountId", label: "ID" },
+    { key: "type", label: "Entity Type" },
+    { key: "balance", label: "Balance" },
+    { key: "interestRate", label: "Interest Rate" },
+    { key: "nextCheckNumber", label: "Next Check Number" },
+    {
+        key: "actions",
+        label: "Actions",
+        render: (row) => (
+            <ActionGroup
+                actions={[
+                    {
+                        label: "UPDATE",
+                        className: "btn-update",
+                        onClick: () => onUpdate(row.accountId)
+                    },
+                    {
+                        label: "DELETE",
+                        className: "btn-delete",
+                        onClick: () => onDelete(row.accountId)
                     },
                 ]}
             />
