@@ -8,7 +8,10 @@ import org.springframework.data.repository.query.Param;
 
 import com.fdmgroup.model.Account;
 
-public interface AccountRepository extends JpaRepository<Account, Long>{
+public interface AccountRepository extends JpaRepository<Account, Long> {
 	@Query("SELECT a FROM Account a WHERE a.customer.address.city = :city")
-    List<Account> findAccountsByCustomerCity(@Param("city") String city);
+	List<Account> findAccountsByCustomerCity(@Param("city") String city);
+
+	@Query("SELECT a FROM Account a WHERE a.customer.id = :customerId")
+	List<Account> findAccountsByCustomerId(@Param("customerId") Long customerId);
 }

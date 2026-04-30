@@ -41,12 +41,22 @@ public class AccountController {
 		return ResponseEntity.ok(accountService.getAllAccounts());
 	}
 
-	@Operation(summary = "Retrieves a accounts from a user from a specific city")
+	@Operation(summary = "Retrieves accounts from a specific user")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Account found"),
 			@ApiResponse(responseCode = "404", description = "No accounts registered to customers in specified city")
 	})
-	@GetMapping("/search")
+	@GetMapping("/search-customer")
+	public ResponseEntity<List<Account>> getAccountsByCustomerId(@RequestParam long customerId) {
+		return ResponseEntity.ok(accountService.getAccountsByCustomerId(customerId));
+	}
+
+	@Operation(summary = "Retrieves accounts from a user from a specific city")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Account found"),
+			@ApiResponse(responseCode = "404", description = "No accounts registered to customers in specified city")
+	})
+	@GetMapping("/search-city")
 	public ResponseEntity<List<Account>> getAccountsByCity(@RequestParam String city) {
 		return ResponseEntity.ok(accountService.getAccountsByCity(city));
 	}

@@ -38,6 +38,18 @@ public class AccountService {
 				.orElseThrow(() -> new ArgNotFoundException("Account not found with ID: " + accountId));
 	}
 
+	public List<Account> getAccountsByCustomerId(long customerId) {
+		log.info("Fetching accounts from customer with id: ", customerId);
+		List<Account> accounts = accountRepo.findAccountsByCustomerId(customerId);
+
+		if (accounts.isEmpty()) {
+			throw new ArgNotFoundException("No accounts found for customer with id: " + customerId);
+		}
+
+		log.info("Found {} accounts from account with id: {}", accounts.size(), customerId);
+		return accounts;
+	}
+
 	public List<Account> getAccountsByCity(String city) {
 		log.info("Fetching accounts of customers from city {}", city);
 		List<Account> accounts = accountRepo.findAccountsByCustomerCity(city);
@@ -61,7 +73,7 @@ public class AccountService {
 		if ("savings".equalsIgnoreCase(accountDTO.getType())) {
 			account = SavingsAccount.builder()
 					.balance(accountDTO.getBalance())
-					.interestRate(accountDTO.getInterestRate())
+					.interestRate(accountDTO.getInterestRate() != null ? accountDTO.getInterestRate() : 1.5)
 					.customer(customer)
 					.build();
 
