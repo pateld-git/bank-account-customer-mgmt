@@ -33,6 +33,28 @@ export const fetchCustomerById = async (id) => {
     return await response.json();
 };
 
+
+export const updateCustomer = async (id, customerData) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(customerData),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to update customer: ${response.statusText}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error("Service Error:", error);
+        throw error;
+    }
+};
+
 export const deleteCustomer = async (id) => {
     const response = await fetch(`${API_BASE_URL}/${id}`, {
         method: "DELETE",
