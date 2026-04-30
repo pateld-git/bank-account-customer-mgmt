@@ -45,7 +45,7 @@ export const ADD_PAGE_CONFIGS = {
 
 export const UPDATE_PAGE_CONFIGS = {
     customer: {
-        title: "Update Customer Information",
+        title: "Update Customer Address",
         fields: [
             {
                 name: "customerId",
@@ -54,10 +54,10 @@ export const UPDATE_PAGE_CONFIGS = {
                 min: "1",
                 required: true,
             },
-            { name: "firstName", label: "First Name", required: true },
-            { name: "lastName", label: "Last Name", required: true },
-            { name: "street", label: "Street", required: true },
-            { name: "zipCode", label: "Zip Code", required: true },
+            { name: "streetNumber", label: "Street", required: true },
+            { name: "city", label: "City", required: true },
+            { name: "province", label: "Province", required: true },
+            { name: "postalCode", label: "Zip Code", required: true },
         ],
     },
     account: {
