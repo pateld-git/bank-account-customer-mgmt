@@ -46,7 +46,12 @@ const CustomersPage = () => {
     navigate(`/update/customer/${id}`);
   };
 
-  const columns = getCustomerColumns(onDeleteConfirm, onUpdate);
+  const onViewAccounts = (id) => {
+    console.log("View accounts triggered for ID:", id);
+    navigate(`/customers/${id}/accounts`);
+  };
+
+  const columns = getCustomerColumns(onViewAccounts, onUpdate, onDeleteConfirm);
 
   return (
     <DashboardTemplate>
