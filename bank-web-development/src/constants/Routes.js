@@ -10,7 +10,7 @@ import CustomersPage from "../components/pages/Customers/CustomerPage";
  * Configuration object for application routing.
  * Defines the path, navigation label, and component element for each route.
  * 
- * @typedef {Object} ROUTES
+ * @typedef {Object} RouteConfig
  * @property {string} path - The URL path for the route.
  * @property {string} label - The display name for navigation links.
  * @property {JSX.Element} element - The React component to render for this route.
@@ -18,7 +18,7 @@ import CustomersPage from "../components/pages/Customers/CustomerPage";
 
 /**
  * The collection of all available routes in the application.
- * @type {Object.<string, RouteConfig>}
+ * @type {Record<string, RouteConfig>}
  */
 
 export const ROUTES = {
