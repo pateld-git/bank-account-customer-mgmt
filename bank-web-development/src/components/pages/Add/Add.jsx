@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ADD_PAGE_CONFIGS } from "../../../constants/FormConfigs";
 import { createCustomer } from "../../../services/CustomerService";
+import { CustomerDTO } from "../../../constants/DTO/CustomerDTO";
 import "./Add.css";
 
 /**
@@ -26,14 +27,8 @@ const Add = () => {
   }, [customerId]);
 
   const handleFormSubmit = async (formData) => {
-    const payload = {
-      name: formData.name,
-      type: formData.type,
-      address: {
-        streetNumber: formData.streetNumber,
-        postalCode: formData.postalCode,
-      },
-    };
+    const customerDto = new CustomerDTO(formData);
+    const payload = customerDto.toPayload();
 
     console.log(payload);
 
@@ -56,7 +51,6 @@ const Add = () => {
       } else if (activeType === "account") {
         console.log("createAccount");
         alert("Account opened successfully!");
-        //navigate("/customers"); // Or wherever you track accounts
       }
     } catch (err) {
       setError(err.message || "An error occurred while saving.");
