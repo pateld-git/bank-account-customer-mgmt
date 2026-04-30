@@ -1,0 +1,53 @@
+/* This wrapper allows the table to scroll on mobile instead of breaking */
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.custom-dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.15rem;
+    min-width: 600px;
+}
+
+.custom-dashboard-table th,
+.custom-dashboard-table td {
+    padding: 18px 24px;
+    border-bottom: 1px solid #eee;
+    border: 2px solid #a5a5a5;
+}
+
+.custom-dashboard-table th {
+    text-align: center;
+    background-color: #d5d8d7;
+    font-weight: bolder;
+    color: var(--link-color);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.custom-dashboard-table td {
+    text-align: left;
+}
+
+.custom-dashboard-table tr {
+    transition: background-color 0.5s ease;
+}
+
+.custom-dashboard-table tr:hover {
+    background-color: #dee5eb;
+}
+
+.table-action-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    /* This is the key for centering flex items */
+    width: 100%;
+}
