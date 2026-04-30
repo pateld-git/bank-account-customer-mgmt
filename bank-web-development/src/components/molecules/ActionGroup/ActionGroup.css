@@ -1,0 +1,52 @@
+.table-action-group {
+    display: flex;
+    gap: 12px;
+}
+
+.action-button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #d1d9e6;
+    background: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-button:hover {
+    background: #d1cfcf;
+    transform: translateY(-1px);
+}
+
+.btn-view {
+    background-color: #3eb058 !important;
+    /* Indigo to match your header */
+    color: white !important;
+    border: none !important;
+}
+
+.btn-view:hover {
+    background-color: #216f3f !important;
+}
+
+.btn-update {
+    background-color: #bd6929 !important;
+    /* Indigo to match your header */
+    color: white !important;
+    border: none !important;
+}
+
+.btn-update:hover {
+    background-color: #935220 !important;
+}
+
+.btn-delete {
+    background-color: #b53f3f !important;
+    /* Indigo to match your header */
+    color: white !important;
+    border: none !important;
+}
+
+.btn-delete:hover {
+    background-color: #722222 !important;
+}
