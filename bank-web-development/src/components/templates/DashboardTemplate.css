@@ -1,0 +1,22 @@
+.dashboard-body {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+}
+
+.main-content-area {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        /* 60px is the "sweet spot" to clear the default burger icon size/position */
+        padding-left: 60px;
+
+        /* Ensure the header content doesn't wrap weirdly */
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
