@@ -3,8 +3,10 @@ import DashboardTemplate from "../../templates/DashboardTemplate";
 import Button from "../../atoms/Button/Button";
 import DynamicForm from "../../organisms/Dynamic Form/DynamicForm";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { UPDATE_PAGE_CONFIGS } from "../../../constants/FormConfigs";
+import { updateCustomer } from "../../../services/CustomerService";
+import { CustomerDTO } from "../../../constants/DTO/CustomerDTO";
 import "./Update.css";
 
 /**
@@ -13,7 +15,10 @@ import "./Update.css";
  */
 const Update = () => {
   const { type, id } = useParams();
+  const navigate = useNavigate();
   const [activeType, setActiveType] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (type && UPDATE_PAGE_CONFIGS[type]) {
@@ -24,15 +29,47 @@ const Update = () => {
   const getInitialData = () => {
     if (!id) return {};
 
-    // 1. If we have a valid activeType, use the specific field name
-    // 2. If we DON'T have an activeType yet (but have an ID),
-    //    we just return the ID with a generic key or wait for selection.
+    if (activeType === "customer") {
+      return { customerId: id };
+    } else if (activeType === "account") {
+      return { accountId: id };
+    }
 
-    let idFieldName = "id"; // Default fallback
-    if (activeType === "customer") idFieldName = "customerId";
-    if (activeType === "account") idFieldName = "accountId";
+    return {};
+  };
 
-    return { [idFieldName]: id };
+  const handleFormSubmit = async (formData) => {
+    const targetId =
+      activeType === "customer" ? formData.customerId : formData.accountId;
+
+    const customerDto = new CustomerDTO(formData);
+    const payload = customerDto.toPayload();
+
+    console.log(payload);
+
+    const isConfirmed = window.confirm(
+      `Are you sure you want to update this ${activeType}?`,
+    );
+
+    if (!isConfirmed) return;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      if (activeType === "customer") {
+        await updateCustomer(targetId, payload);
+        alert("Customer updated successfully!");
+        navigate("/customers");
+      } else if (activeType === "account") {
+        console.log("Account Update Payload (No PUT yet):", payload);
+        alert("Account update logged to console.");
+      }
+    } catch (err) {
+      setError(err.message || "An error occurred while updating.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -44,11 +81,6 @@ const Update = () => {
             : "Update Records"}
         </h2>
 
-        {/* Show buttons if:
-           1. There is no 'type' in the URL 
-           OR 
-           2. The 'type' in the URL isn't one we recognize (invalid type)
-        */}
         {(!type || !UPDATE_PAGE_CONFIGS[type]) && (
           <div className="button-group">
             <Button onClick={() => setActiveType("customer")}>
@@ -62,12 +94,15 @@ const Update = () => {
 
         <div className="form-display-area">
           {activeType ? (
-            <DynamicForm
-              key={activeType}
-              fields={UPDATE_PAGE_CONFIGS[activeType].fields}
-              initialData={getInitialData()}
-              onSubmit={(data) => console.log("Update Submitted:", data)}
-            />
+            <div className={isLoading ? "form-loading" : ""}>
+              <DynamicForm
+                key={activeType}
+                fields={UPDATE_PAGE_CONFIGS[activeType].fields}
+                initialData={getInitialData()}
+                onSubmit={handleFormSubmit}
+              />
+              {isLoading && <p>Updating record...</p>}
+            </div>
           ) : (
             <p>
               {id
@@ -76,6 +111,14 @@ const Update = () => {
             </p>
           )}
         </div>
+
+        {error && (
+          <div className="error-message-box">
+            <p className="error-message-text">
+              <strong>Error:</strong> {error}
+            </p>
+          </div>
+        )}
       </main>
     </DashboardTemplate>
   );
