@@ -3,9 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Centers the header and content area */
     width: 100%;
-    padding: 2rem 1rem;
 }
 
 /* Header styling consistent with FindByIdPage */
@@ -15,8 +13,7 @@
 }
 
 .users-page-header h2 {
-    color: #1a237e;
-    /* Banking Blue */
+    color: var(--link-color);
     font-size: 2rem;
     margin-bottom: 0.5rem;
 }
@@ -24,25 +21,6 @@
 .users-page-header p {
     color: #555;
     font-size: 1.1rem;
-}
-
-/* This section controls the table's footprint */
-.users-content-area {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    /* Centers the table horizontally */
-    overflow-x: auto;
-    /* Adds scrollbar if the window gets too small */
-}
-
-/* Targeting the Table organism */
-.users-content-area {
-    /* This is the key: only takes the space it needs for the data */
-    width: auto;
-    min-width: 60%;
-    /* Prevents it from being too tiny */
-    max-width: 100%;
 }
 
 /* Status messages styling */
