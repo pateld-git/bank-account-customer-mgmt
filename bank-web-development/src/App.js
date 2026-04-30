@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        {/* Map through the object values to generate routes */}
         {Object.values(ROUTES).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))}
