@@ -1,0 +1,63 @@
+/* Center the main container and provide responsive padding */
+.users-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers the header and content area */
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+/* Header styling consistent with FindByIdPage */
+.users-page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.users-page-header h2 {
+    color: #1a237e;
+    /* Banking Blue */
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.users-page-header p {
+    color: #555;
+    font-size: 1.1rem;
+}
+
+/* This section controls the table's footprint */
+.users-content-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Centers the table horizontally */
+    overflow-x: auto;
+    /* Adds scrollbar if the window gets too small */
+}
+
+/* Targeting the Table organism */
+.users-content-area {
+    /* This is the key: only takes the space it needs for the data */
+    width: auto;
+    min-width: 60%;
+    /* Prevents it from being too tiny */
+    max-width: 100%;
+}
+
+/* Status messages styling */
+.loading,
+.error,
+.empty-state {
+    padding: 2rem;
+    font-weight: 500;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+.error {
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+}
