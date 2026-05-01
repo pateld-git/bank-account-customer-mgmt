@@ -1,43 +1,68 @@
-# bank-account-customer-mgmt
+# Sprint 5
 
-This is the overall repository for the Bank Account Customer Management project.
+The purpose of this epic is to create a frontend application that consumes RESTful APIs from the backend created during the Sprint 4 epic.
 
-## master
+## Home Page
 
-The branch that you are first directed to.
-This branch should only contain REAME.md
-No functioning code should be placed in this branch.
+The home page displays a welcome message. It also includes the standard header, navigation subheader, and the pop-out side bar standard to all dashboard pages.
 
-## Sprint1
+![Home Page](<README Images/home_page.png>)
 
-The submission for Sprint 1 is contained within its own separate branch.
-The purpose of this initial project is to show competency in basic Java concepts.
+![Home Page: Side Bar Pop Out](<README Images/home_page_side_bar_pop_out.png>)
 
-## Sprint2
+## Add Page
 
-The submission for Sprint 2 is contained within its own separate branch.
-The purpose of this follow-up project is to show competency in:
+The add page has functionality to add a new customer or a new account to the database.
 
-- Test Driven Development using JUnit
-- Mockito
-- SOLID Design Principles
-- Use of Relevant Design Patterns (i.e., Singleton, Object Pool, etc.)
+![Add Page](<README Images/add_page.png>)
 
-## Sprint3
+### Add Customer
 
-The submission for Sprint 3 is contained within its own separate branch.
-The purpose of this follow-up project is to show competency in:
+Selecting Add Cutomer will display form fields for a user input. Hitting submit will send the post request to the backend.
 
-- Use of a Relational Database in MySQL
-  - SELECT, WHERE, and ORDER BY clauses
-  - Single Row Functions
-  - Aggregate Functions
-  - Joins
-  - Subqueries
-  - Data Modification Language (DML)
-  - Transaction Control Language (TCL)
-- Use of Node.js, Express, and MongoDB to create a RESTful API for a basic banking system.
+![Add Customer](<README Images/add_customer.png>)
 
-## Sprint4
+### Add Account
 
-To be added in a future release.
+Selecting Add Account will display form fields to add an account. Hitting submit will send the post request to the backend.
+
+![Add Account](<README Images/add_account.png>)
+
+## Update Page
+
+The update page has functionality to add a new customer or a new account to the database.
+
+![Update Page](<README Images/update_page.png>)
+
+### Update Customer
+
+Selecting Update Customer will display fields to update an account. Hitting submit will send the put request to the backend.
+
+![Update Customer](<README Images/update_customer.png>)
+
+### Update Account
+
+Selecting Update Account will display fields to update an account. Hitting submit will send the put request to the backend.
+
+![Update Customer](<README Images/update_account.png>)
+
+## Customers Page
+
+Customers Page queries the backend for all customers.
+
+- Displays message when connecting to backend.
+  ![Sync Message](<README Images/customers_syncing.png>)
+
+- Displays error if there is a connection issue.
+  ![Error Message](<README Images/customers_error.png>)
+
+- Displays a table of customers if any exist in the database.
+  ![Customer Table](<README Images/customers_table.png>)
+
+## Find By ID
+
+Find By ID page queries the backend for a specific customer or account.
+![Find By ID Page](<README Images/find_by_id.png>)
+
+- Record found with id:
+  ![Found Recird By Its ID](<README Images/find_by_id_found.png>)
