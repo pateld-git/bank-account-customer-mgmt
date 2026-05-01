@@ -1,92 +1,79 @@
+import axios from "axios";
+
 const API_BASE_URL = "http://localhost:8080/api/customers";
 
+/**
+ * Creates a new customer.
+ */
 export const createCustomer = async (customerData) => {
     try {
-        const response = await fetch(API_BASE_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(customerData),
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.message || "Failed to create customer");
-        }
-
-        return await response.json();
+        const response = await axios.post(API_BASE_URL, customerData);
+        return response.data;
     } catch (error) {
-        console.error("Service Error (createCustomer):", error);
-        throw error;
+        const message = error.response?.data?.message || "Failed to create customer";
+        console.error("Service Error (createCustomer):", message);
+        throw new Error(message);
     }
-}
+};
 
+/**
+ * Fetches all customers.
+ */
 export const fetchAllCustomers = async () => {
     try {
-        const response = await fetch(API_BASE_URL);
-        if (!response.ok) throw new Error("Could not connect to the banking service.");
-        return await response.json();
+        const response = await axios.get(API_BASE_URL);
+        return response.data;
     } catch (error) {
         console.error("Error in fetchAllCustomers:", error);
-        throw error;
+        throw new Error("Could not connect to the banking service.");
     }
 };
 
+/**
+ * Fetches a single customer by ID.
+ */
 export const fetchCustomerById = async (id) => {
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`);
-
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            const error = new Error(errorData.message || "Customer not found");
-            error.status = response.status;
-            error.timestamp = errorData.timestamp;
-            throw error;
-        }
-
-        return await response.json();
+        const response = await axios.get(`${API_BASE_URL}/${id}`);
+        return response.data;
     } catch (error) {
-        console.error(`Service Error (fetchById - ID: ${id}):`, error);
-        throw error;
+        const errorData = error.response?.data || {};
+        const customError = new Error(errorData.message || "Customer not found");
+
+        customError.status = error.response?.status;
+        customError.timestamp = errorData.timestamp;
+
+        console.error(`Service Error (fetchById - ID: ${id}):`, customError);
+        throw customError;
     }
 };
 
-
+/**
+ * Updates an existing customer.
+ */
 export const updateCustomer = async (id, customerData) => {
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(customerData),
-        });
-
-        if (!response.ok) {
-            throw new Error(`Failed to update customer: ${response.statusText}`);
-        }
-
-        return await response.json();
+        const response = await axios.put(`${API_BASE_URL}/${id}`, customerData);
+        return response.data;
     } catch (error) {
-        console.error("Service Error:", error);
-        throw error;
+        const message = error.response?.data?.message || "Failed to update customer";
+        console.error("Service Error (updateCustomer):", message);
+        throw new Error(message);
     }
 };
 
+/**
+ * Deletes a customer by ID.
+ */
 export const deleteCustomer = async (id) => {
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`, {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.message || `Failed to delete: ${response.status}`);
-        }
-
+        await axios.delete(`${API_BASE_URL}/${id}`);
         return true;
     } catch (error) {
-        console.error(`Error in deleteCustomer for ID ${id}:`, error);
+        const errorData = error.response?.data || {};
+        const message = errorData.message || `Failed to delete: ${error.response?.status}`;
+
+        console.error(`Error in deleteCustomer for ID ${id}:`, message);
+        throw new Error(message);
     }
 };
-
