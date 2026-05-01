@@ -2,7 +2,6 @@ import Home from "../components/pages/Home/Home";
 import AddPage from "../components/pages/Add/Add";
 import UpdatePage from "../components/pages/Update/Update";
 import FindByIdPage from "../components/pages/FindById/FindByIdPage";
-import FindByBalancePage from "../components/pages/FindByBalance/FindByBalancePage";
 import CustomersPage from "../components/pages/Customers/CustomerPage";
 
 
@@ -27,5 +26,4 @@ export const ROUTES = {
     UPDATE: { path: "/updated", label: "Update", element: <UpdatePage /> },
     CUSTOMERS: { path: "/customers", label: "Customers", element: <CustomersPage /> },
     FIND_BY_ID: { path: "/find-by-id", label: "Find by ID", element: <FindByIdPage /> },
-    FIND_BY_BALANCE: { path: "/find-by-balance", label: "Find by Balance", element: <FindByBalancePage /> },
 };

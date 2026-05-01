@@ -18,7 +18,7 @@ export const ADD_PAGE_CONFIGS = {
         title: "Open New Account",
         fields: [
             {
-                name: "accountType",
+                name: "type",
                 label: "Account Type",
                 component: "select",
                 options: ["Savings", "Checking"],
@@ -77,6 +77,21 @@ export const UPDATE_PAGE_CONFIGS = {
                 step: "0.01",
                 min: "0.01",
                 required: true,
+            },
+            {
+                name: "interestRate",
+                label: "Interest Rate (%)",
+                type: "number",
+                step: "0.01",
+                min: "1.75",
+                placeholder: "Savings Accounts only"
+            },
+            {
+                name: "nextCheckNumber",
+                label: "Next Check Number",
+                type: "number",
+                min: "2",
+                placeholder: "Checking Accounts only"
             },
         ],
     },

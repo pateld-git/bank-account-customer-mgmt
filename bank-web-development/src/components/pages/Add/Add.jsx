@@ -7,7 +7,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ADD_PAGE_CONFIGS } from "../../../constants/FormConfigs";
 import { createCustomer } from "../../../services/CustomerService";
 import { CustomerDTO } from "../../../constants/DTO/CustomerDTO";
+import { AccountDTO } from "../../../constants/DTO/AccountDTO";
 import "./Add.css";
+import { createAccount } from "../../../services/AccountService";
 
 /**
  * Add component that serves as the page for adding new bank accounts or customers.
@@ -27,15 +29,17 @@ const Add = () => {
   }, [customerId]);
 
   const handleFormSubmit = async (formData) => {
-    const customerDto = new CustomerDTO(formData);
-    const payload = customerDto.toPayload();
+    let payload;
 
+    if (activeType === "customer") {
+      payload = new CustomerDTO(formData).toPayload();
+    } else {
+      payload = new AccountDTO(formData).toPayload();
+    }
     console.log(payload);
 
-    const recordType =
-      activeType === "customer" ? "new customer" : "new account";
     const isConfirmed = window.confirm(
-      `Are you sure you want to add this ${recordType}?`,
+      `Are you sure you want to add this new ${activeType}?`,
     );
 
     if (!isConfirmed) return;
@@ -49,8 +53,9 @@ const Add = () => {
         alert("Customer created successfully!");
         navigate("/customers");
       } else if (activeType === "account") {
-        console.log("createAccount");
+        await createAccount(payload);
         alert("Account opened successfully!");
+        navigate(`/customers/${formData.customerId}/accounts`);
       }
     } catch (err) {
       setError(err.message || "An error occurred while saving.");

@@ -6,7 +6,9 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { UPDATE_PAGE_CONFIGS } from "../../../constants/FormConfigs";
 import { updateCustomer } from "../../../services/CustomerService";
+import { updateAccount } from "../../../services/AccountService";
 import { CustomerDTO } from "../../../constants/DTO/CustomerDTO";
+import { AccountDTO } from "../../../constants/DTO/AccountDTO";
 import "./Update.css";
 
 /**
@@ -42,15 +44,18 @@ const Update = () => {
     const targetId =
       activeType === "customer" ? formData.customerId : formData.accountId;
 
-    const customerDto = new CustomerDTO(formData);
-    const payload = customerDto.toPayload();
+    let payload;
+    if (activeType === "customer") {
+      payload = new CustomerDTO(formData).toPayload();
+    } else {
+      payload = new AccountDTO(formData).toPayload();
+    }
 
     console.log(payload);
 
     const isConfirmed = window.confirm(
       `Are you sure you want to update this ${activeType}?`,
     );
-
     if (!isConfirmed) return;
 
     setIsLoading(true);
@@ -60,11 +65,11 @@ const Update = () => {
       if (activeType === "customer") {
         await updateCustomer(targetId, payload);
         alert("Customer updated successfully!");
-        navigate("/customers");
       } else if (activeType === "account") {
-        console.log("Account Update Payload (No PUT yet):", payload);
+        await updateAccount(targetId, payload);
         alert("Account update logged to console.");
       }
+      navigate("/customers");
     } catch (err) {
       setError(err.message || "An error occurred while updating.");
     } finally {

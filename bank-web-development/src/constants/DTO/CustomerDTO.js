@@ -1,7 +1,7 @@
 export class CustomerDTO {
     constructor(formData) {
-        this.name = formData.name || "no input";
-        this.type = formData.type || "no input";
+        this.name = formData.name || "known-by-db";
+        this.type = formData.type || "known-by-db";
         this.address = {
             streetNumber: formData.streetNumber,
             city: formData.city,

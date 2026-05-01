@@ -3,7 +3,13 @@ import Button from "../../atoms/Button/Button";
 import InputField from "../../atoms/InputField/InputField";
 import "./DynamicForm.css";
 
-const DynamicForm = ({ title, fields, onSubmit, initialData = {} }) => {
+const DynamicForm = ({
+  title,
+  fields,
+  placeholder,
+  onSubmit,
+  initialData = {},
+}) => {
   const [formData, setFormData] = useState(() => {
     const initialState = {};
     fields.forEach((field) => {
@@ -38,7 +44,7 @@ const DynamicForm = ({ title, fields, onSubmit, initialData = {} }) => {
       value: formData[field.name] || "",
       onChange: handleChange,
       required: field.required,
-      placeholder: field.label,
+      placeholder: field.placeholder || field.label,
       min: field.min,
       step: field.step,
       max: field.max,
