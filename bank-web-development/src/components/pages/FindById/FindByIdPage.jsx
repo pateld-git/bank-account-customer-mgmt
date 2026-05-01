@@ -7,8 +7,14 @@ import {
   fetchCustomerById,
   deleteCustomer,
 } from "../../../services/CustomerService";
-// import { fetchAccountById } from "../../../services/AccountService";
-import { getCustomerColumns } from "../../../utils/TableColumns";
+import {
+  fetchAccountById,
+  deleteAccount,
+} from "../../../services/AccountService";
+import {
+  getCustomerColumns,
+  getAccountColumns,
+} from "../../../utils/TableColumns";
 import "./FindByIdPage.css";
 import { useNavigate } from "react-router-dom";
 
@@ -29,6 +35,7 @@ const FindByIdPage = () => {
 
   /**
    * Navigates to the Update page with the correct type and ID.
+   * @param {number|string} id - The ID of the record to update.
    */
   const handleUpdate = (id) => {
     const type = searchType.customer ? "customer" : "account";
@@ -37,29 +44,39 @@ const FindByIdPage = () => {
 
   /**
    * Handles record deletion.
+   * @param {number|string} id - The ID of the record to delete.
    */
   const handleDelete = async (id) => {
-    if (
-      !window.confirm(
-        `Are you sure you want to delete this ${searchType.customer ? "customer" : "account"}?`,
-      )
-    ) {
+    const typeLabel = searchType.customer ? "customer" : "account";
+    if (!window.confirm(`Are you sure you want to delete this ${typeLabel}?`))
       return;
-    }
 
     try {
       if (searchType.customer) {
         await deleteCustomer(id);
       } else {
-        // await deleteAccount(id);
+        await deleteAccount(id);
       }
       alert("Record deleted successfully.");
-      setResult(null); // Clear the table after deletion
+      setResult(null);
     } catch (err) {
       setError("Failed to delete the record. Please try again later.");
     }
   };
 
+  /**
+   * Navigates to the accounts view for a specific customer.
+   * @param {number|string} id - The customer ID.
+   */
+  const onViewAccounts = (id) => {
+    console.log("View accounts triggered for ID:", id);
+    navigate(`/customers/${id}/accounts`);
+  };
+
+  /**
+   * Handles the logic for switching between Customer and Account search types.
+   * @param {React.ChangeEvent<HTMLInputElement>} e - The change event from the checkbox.
+   */
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
     if (!checked) return;
@@ -70,6 +87,10 @@ const FindByIdPage = () => {
     });
   };
 
+  /**
+   * Fetches data from the service based on the selected search type and ID.
+   * @param {string} value - The ID value entered in the search bar.
+   */
   const handleSearch = async (value) => {
     if (!value) return;
 
@@ -82,8 +103,7 @@ const FindByIdPage = () => {
       if (searchType.customer) {
         data = await fetchCustomerById(value);
       } else if (searchType.account) {
-        console.log("Account search triggered for ID:", value);
-        throw new Error("404");
+        data = await fetchAccountById(value);
       }
       setResult(data);
     } catch (err) {
@@ -99,8 +119,13 @@ const FindByIdPage = () => {
     }
   };
 
-  const customerColumns = getCustomerColumns(handleDelete, handleUpdate);
-  const activeColumns = searchType.customer ? customerColumns : [];
+  const customerColumns = getCustomerColumns(
+    onViewAccounts,
+    handleUpdate,
+    handleDelete,
+  );
+  const accountColumns = getAccountColumns(handleDelete, handleUpdate);
+  const activeColumns = searchType.customer ? customerColumns : accountColumns;
 
   return (
     <DashboardTemplate>
