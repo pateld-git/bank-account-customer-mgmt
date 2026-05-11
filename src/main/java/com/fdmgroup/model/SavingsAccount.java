@@ -18,6 +18,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public class SavingsAccount extends Account {
+
 	@Column(name = "INTEREST_RATE", nullable = false)
 	@Schema(description = "Annual interest rate percentage")
 	private double interestRate;

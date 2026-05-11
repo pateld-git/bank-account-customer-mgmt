@@ -17,19 +17,17 @@ import lombok.NoArgsConstructor;
 public class CustomerDTO {
 	@NotBlank(message = "Type is required")
 	@Schema(
-	    description = "The category of customer determining the underlying record type.", 
-	    example = "person", 
-	    allowableValues = {"person", "company"}
-	)
+			description = "The category of customer determining the underlying record type.",
+			example = "person",
+			allowableValues = { "person", "company" })
 	private String type;
-	
+
 	@NotBlank(message = "Name is required")
 	@Schema(description = "The full name of the customer", example = "John Doe")
 	private String name;
-	
+
 	@NotNull(message = "Address object must be provided")
 	@Valid
-	@Schema(description = 
-			"The customer's address information. Note: City and Province are populated automatically via Geocoder.")
+	@Schema(description = "The customer's address information. Note: City and Province are populated automatically via Geocoder.")
 	private Address address;
 }
