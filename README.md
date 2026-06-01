@@ -1,10 +1,17 @@
 # bank-account-customer-mgmt
 
-A comprehensive banking application project showcasing the evolution of Java development skills and architectural patterns. This repository demonstrates progression from basic Java concepts through advanced frameworks and full-stack development.
+A banking application project demonstrating progressive Java development skills across five sprints: from foundational OOP concepts through testing practices, database integration, REST APIs, Spring Boot, and full-stack React.js development. This project documents my learning journey through Java development, from foundational concepts to production-ready enterprise applications using modern frameworks and best practices.
 
 ## Repository Structure
 
 Each sprint is contained within its own dedicated branch. The `master` branch serves as a template and navigation guide only—no functioning code is present here.
+
+## Getting Started
+
+1. Review this README for project overview
+2. Navigate to the specific sprint branch of interest
+3. Follow the branch-specific documentation and setup instructions
+4. Each sprint contains its own project structure and requirements
 
 ## Branch Guide
 
@@ -79,14 +86,3 @@ Full-stack application with React.js frontend consuming the Sprint 4 backend.
 - API consumption and data binding
 - User interface design and interaction
 - Full-stack testing and debugging
-
-## Getting Started
-
-1. Review this README for project overview
-2. Navigate to the specific sprint branch of interest
-3. Follow the branch-specific documentation and setup instructions
-4. Each sprint contains its own project structure and requirements
-
-## Notes
-
-This project documents my learning journey through Java development, from foundational concepts to production-ready enterprise applications using modern frameworks and best practices.
