@@ -1,43 +1,92 @@
 # bank-account-customer-mgmt
 
-This is the overall repository for the Bank Account Customer Management project.
+A comprehensive banking application project showcasing the evolution of Java development skills and architectural patterns. This repository demonstrates progression from basic Java concepts through advanced frameworks and full-stack development.
 
-## master
+## Repository Structure
 
-The branch that you are first directed to.
-This branch should only contain REAME.md
-No functioning code should be placed in this branch.
+Each sprint is contained within its own dedicated branch. The `master` branch serves as a template and navigation guide only—no functioning code is present here.
 
-## Sprint1
+## Branch Guide
 
-The submission for Sprint 1 is contained within its own separate branch.
-The purpose of this initial project is to show competency in basic Java concepts.
+### master
 
-## Sprint2
+The primary branch containing this README and navigation documentation.
+- **Purpose:** Template and entry point for the project
+- **Content:** Documentation only
+- **Code:** None
 
-The submission for Sprint 2 is contained within its own separate branch.
-The purpose of this follow-up project is to show competency in:
+### Sprint 1: Fundamentals
 
-- Test Driven Development using JUnit
-- Mockito
+**Branch:** `Sprint1`
+
+Introduction to core Java concepts and object-oriented programming principles.
+
+**Learning Objectives:**
+- Basic Java syntax and data types
+- Object-oriented design fundamentals
+- Class structure and methods
+- Control flow and logic
+
+### Sprint 2: Testing & Design Patterns
+
+**Branch:** `Sprint2`
+
+Advancement into professional development practices with testing frameworks and proven design patterns.
+
+**Learning Objectives:**
+- Test-Driven Development (TDD) using JUnit
+- Mocking frameworks (Mockito)
 - SOLID Design Principles
-- Use of Relevant Design Patterns (i.e., Singleton, Object Pool, etc.)
+- Relevant Design Patterns (e.g., Singleton, Object Pool)
 
-## Sprint3
+### Sprint 3: Database & REST APIs
 
-The submission for Sprint 3 is contained within its own separate branch.
-The purpose of this follow-up project is to show competency in:
+**Branch:** `Sprint3`
 
-- Use of a Relational Database in MySQL
+Integration of database systems and RESTful API development.
+
+**Learning Objectives:**
+- Relational Database design and queries (MySQL)
   - SELECT, WHERE, and ORDER BY clauses
-  - Single Row Functions
-  - Aggregate Functions
-  - Joins
-  - Subqueries
-  - Data Modification Language (DML)
+  - Single Row and Aggregate Functions
+  - Joins and Subqueries
+  - Data Manipulation Language (DML)
   - Transaction Control Language (TCL)
-- Use of Node.js, Express, and MongoDB to create a RESTful API for a basic banking system.
+- REST API development using Node.js, Express, and MongoDB
 
-## Sprint4
+### Sprint 4: Spring Boot & Advanced Architecture
 
-To be added in a future release.
+**Branch:** `Sprint4`
+
+Professional enterprise application development using Spring Framework.
+
+**Learning Objectives:**
+- Spring Boot framework and auto-configuration
+- Dependency Injection and Inversion of Control
+- Advanced database integration and ORM (Hibernate/JPA)
+- RESTful API design with Spring
+- Application configuration and deployment
+
+### Sprint 5: Frontend Integration
+
+**Branch:** `Sprint5`
+
+Full-stack application with React.js frontend consuming the Sprint 4 backend.
+
+**Learning Objectives:**
+- React.js fundamentals and component architecture
+- State management and hooks
+- API consumption and data binding
+- User interface design and interaction
+- Full-stack testing and debugging
+
+## Getting Started
+
+1. Review this README for project overview
+2. Navigate to the specific sprint branch of interest
+3. Follow the branch-specific documentation and setup instructions
+4. Each sprint contains its own project structure and requirements
+
+## Notes
+
+This project documents my learning journey through Java development, from foundational concepts to production-ready enterprise applications using modern frameworks and best practices.
