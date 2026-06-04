@@ -105,18 +105,18 @@ class TestGeocoderService {
 	}
 
 	@Test
-	@DisplayName("3. 4xx ERROR: Should throw PostalCodeNotFoundException when API returns 404")
-	void test_throwPostalCodeNotFoundExceptionOn404() throws InterruptedException {
-		mockBackEnd.enqueue(new MockResponse().setResponseCode(404));
+	@DisplayName("3. 4xx ERROR: Should throw ArgNotFoundException when API returns any 4xx Client Error")
+	void test_throwArgNotFoundExceptionOn4xx() throws InterruptedException {
+		mockBackEnd.enqueue(new MockResponse().setResponseCode(400));
 
 		CustomerDTO inputDto = CustomerDTO.builder()
-				.address(Address.builder().postalCode("BAD-ZIP").build()).build();
+				.address(Address.builder().postalCode("CLIENT-ERROR").build()).build();
 
 		ArgNotFoundException ex = assertThrows(ArgNotFoundException.class, () -> {
 			geocoderService.getPostalCodeProvinceFromGeocoder(inputDto);
 		});
 
-		assertTrue(ex.getMessage().contains("postal code not found"));
+		assertTrue(ex.getMessage().contains("Invalid request or postal code not found"));
 		assertNotNull(mockBackEnd.takeRequest());
 	}
 
@@ -130,6 +130,24 @@ class TestGeocoderService {
 
 		CustomerDTO inputDto = CustomerDTO.builder()
 				.address(Address.builder().postalCode("NULL-DATA").build()).build();
+
+		ArgNotFoundException ex = assertThrows(ArgNotFoundException.class, () -> {
+			geocoderService.getPostalCodeProvinceFromGeocoder(inputDto);
+		});
+
+		assertTrue(ex.getMessage().contains("No valid geocode data found"));
+		assertNotNull(mockBackEnd.takeRequest());
+	}
+
+	@Test
+	@DisplayName("5. NULL RESPONSE: Should throw ArgNotFoundException when API returns empty body (null object)")
+	void test_throwArgNotFoundExceptionWhenGeoResponseIsNull() throws InterruptedException {
+		mockBackEnd.enqueue(new MockResponse()
+				.setResponseCode(200)
+				.setBody(""));
+
+		CustomerDTO inputDto = CustomerDTO.builder()
+				.address(Address.builder().postalCode("EMPTY-BODY").build()).build();
 
 		ArgNotFoundException ex = assertThrows(ArgNotFoundException.class, () -> {
 			geocoderService.getPostalCodeProvinceFromGeocoder(inputDto);
