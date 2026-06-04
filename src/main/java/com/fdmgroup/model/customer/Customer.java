@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fdmgroup.model.Account;
+import com.fdmgroup.model.Account.Account;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
@@ -66,11 +66,4 @@ public abstract class Customer {
 	@JsonManagedReference
 	private List<Account> accounts;
 
-	protected void name() {
-
-	}
-
-	Customer(String name) {
-		this.name = name;
-	}
 }
