@@ -1,4 +1,4 @@
-package com.fdmgroup.model;
+package com.fdmgroup.model.Account;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;

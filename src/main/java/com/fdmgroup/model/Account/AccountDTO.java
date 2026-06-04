@@ -1,4 +1,4 @@
-package com.fdmgroup.model;
+package com.fdmgroup.model.Account;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -14,10 +14,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AccountDTO {
 	@NotBlank(message = "Type is required")
-	@Schema(
-			description = "The category of customer determining the underlying record type.",
-			example = "person",
-			allowableValues = { "savings", "checking" })
+	@Schema(description = "The category of customer determining the underlying record type.", example = "person", allowableValues = {
+			"savings", "checking" })
 	private String type;
 
 	@NotNull(message = "Double is required")
