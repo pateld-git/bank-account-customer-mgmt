@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import com.fdmgroup.exception.ArgNotFoundException;
-import com.fdmgroup.model.Account;
-import com.fdmgroup.model.AccountDTO;
-import com.fdmgroup.model.CheckingAccount;
-import com.fdmgroup.model.SavingsAccount;
+import com.fdmgroup.model.Account.Account;
+import com.fdmgroup.model.Account.AccountDTO;
+import com.fdmgroup.model.Account.CheckingAccount;
+import com.fdmgroup.model.Account.SavingsAccount;
 import com.fdmgroup.model.customer.Customer;
 import com.fdmgroup.repo.AccountRepository;
 import com.fdmgroup.repo.CustomerRepository;
@@ -100,21 +100,22 @@ public class AccountService {
 		existingAccount.setBalance(dto.getBalance());
 
 		switch (existingAccount) {
-		case SavingsAccount savings -> {
-			if (dto.getInterestRate() == null) {
-				throw new IllegalArgumentException("Update failed: Interest rate is required for Savings accounts.");
+			case SavingsAccount savings -> {
+				if (dto.getInterestRate() == null) {
+					throw new IllegalArgumentException(
+							"Update failed: Interest rate is required for Savings accounts.");
+				}
+				savings.setInterestRate(dto.getInterestRate());
 			}
-			savings.setInterestRate(dto.getInterestRate());
-		}
-		case CheckingAccount checking -> {
-			if (dto.getNextCheckNumber() == null) {
-				throw new IllegalArgumentException(
-						"Update failed: Next check number is required for Checking accounts.");
+			case CheckingAccount checking -> {
+				if (dto.getNextCheckNumber() == null) {
+					throw new IllegalArgumentException(
+							"Update failed: Next check number is required for Checking accounts.");
+				}
+				checking.setNextCheckNumber(dto.getNextCheckNumber());
 			}
-			checking.setNextCheckNumber(dto.getNextCheckNumber());
-		}
-		case null -> throw new IllegalArgumentException("Update failed: Account object is null.");
-		default -> throw new IllegalArgumentException("Update failed: Unknown account type for ID: " + accountId);
+			case null -> throw new IllegalArgumentException("Update failed: Account object is null.");
+			default -> throw new IllegalArgumentException("Update failed: Unknown account type for ID: " + accountId);
 		}
 
 		return accountRepo.save(existingAccount);
