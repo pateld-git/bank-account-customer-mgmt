@@ -29,10 +29,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fdmgroup.controller.AccountController;
-import com.fdmgroup.model.Account;
-import com.fdmgroup.model.AccountDTO;
-import com.fdmgroup.model.CheckingAccount;
-import com.fdmgroup.model.SavingsAccount;
+import com.fdmgroup.model.Account.Account;
+import com.fdmgroup.model.Account.AccountDTO;
+import com.fdmgroup.model.Account.CheckingAccount;
+import com.fdmgroup.model.Account.SavingsAccount;
 import com.fdmgroup.service.AccountService;
 
 @ExtendWith(MockitoExtension.class)
@@ -55,7 +55,7 @@ class AccountControllerTest {
 	}
 
 	@Test
-	@DisplayName("POST: /api/v1/accounts/customer/{id} - Create and Return Savings")
+	@DisplayName("POST: /api/accounts/customer/{id} - Create and Return Savings")
 	void createSavingsAccount_Success() throws Exception {
 		AccountDTO savingsDTO = AccountDTO.builder().type("savings").balance(500.0).interestRate(2.5).build();
 
@@ -63,7 +63,7 @@ class AccountControllerTest {
 
 		when(accountService.addAccount(eq(10L), eq(savingsDTO))).thenReturn(savingsAccount);
 
-		mockMvc.perform(post("/api/v1/accounts/customer/10")
+		mockMvc.perform(post("/api/accounts/customer/10")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(savingsDTO)))
 				.andExpect(status().isCreated())
@@ -75,11 +75,11 @@ class AccountControllerTest {
 	}
 
 	@Test
-	@DisplayName("POST: /api/v1/accounts/customer/{id} - Missing Balance")
+	@DisplayName("POST: /api/accounts/customer/{id} - Missing Balance")
 	void createAccount_ValidationError() throws Exception {
 		AccountDTO invalidDTO = AccountDTO.builder().type("checking").balance(null).build();
 
-		mockMvc.perform(post("/api/v1/accounts/customer/1")
+		mockMvc.perform(post("/api/accounts/customer/1")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(invalidDTO)))
 				.andExpect(status().isBadRequest());
@@ -88,14 +88,14 @@ class AccountControllerTest {
 	}
 
 	@Test
-	@DisplayName("GET: /api/v1/accounts/search - Return accounts of customers within a city")
+	@DisplayName("GET: /api/accounts/search - Return accounts of customers within a city")
 	void searchAccountsByCity_Success() throws Exception {
 		Account savings = SavingsAccount.builder().accountId(1L).balance(100.0).build();
 		Account checking = CheckingAccount.builder().accountId(2L).balance(200.0).build();
 
 		when(accountService.getAccountsByCity("Toronto")).thenReturn(Arrays.asList(savings, checking));
 
-		mockMvc.perform(get("/api/v1/accounts/search")
+		mockMvc.perform(get("/api/accounts/search-city")
 				.param("city", "Toronto"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.size()").value(2))
@@ -106,7 +106,7 @@ class AccountControllerTest {
 	}
 
 	@Test
-	@DisplayName("GET /api/v1/accounts - Should return list with polymorphic types")
+	@DisplayName("GET /api/accounts - Should return list with polymorphic types")
 	void testGetAllAccounts_Success() throws Exception {
 		// Arrange
 		Account savings = SavingsAccount.builder().accountId(1L).balance(100.0).interestRate(2.1).build();
@@ -115,7 +115,7 @@ class AccountControllerTest {
 
 		when(accountService.getAllAccounts()).thenReturn(Arrays.asList(savings, checking));
 
-		mockMvc.perform(get("/api/v1/accounts"))
+		mockMvc.perform(get("/api/accounts"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.size()").value(2))
 				.andExpect(jsonPath("$[0].type").value("SAVINGS"))
@@ -129,7 +129,7 @@ class AccountControllerTest {
 	}
 
 	@Test
-	@DisplayName("GET: /api/v1/accounts/{id} - Return specific account")
+	@DisplayName("GET: /api/accounts/{id} - Return specific account")
 	void testGetAccountById_Success() throws Exception {
 		// Arrange
 		Account checking = CheckingAccount.builder()
@@ -140,7 +140,7 @@ class AccountControllerTest {
 
 		when(accountService.getAccountById(99L)).thenReturn(checking);
 
-		mockMvc.perform(get("/api/v1/accounts/99"))
+		mockMvc.perform(get("/api/accounts/99"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.accountId").value(99L))
 				.andExpect(jsonPath("$.type").value("CHECKING"))
@@ -150,7 +150,7 @@ class AccountControllerTest {
 	}
 
 	@Test
-	@DisplayName("PUT: /api/v1/accounts/{id} - Update Checking")
+	@DisplayName("PUT: /api/accounts/{id} - Update Checking")
 	void updateAccount_Success() throws Exception {
 		AccountDTO updateDTO = AccountDTO.builder().type("checking").balance(1500.0).nextCheckNumber(101).build();
 
@@ -158,7 +158,7 @@ class AccountControllerTest {
 
 		when(accountService.updateAccount(eq(5L), any(AccountDTO.class))).thenReturn(updatedChecking);
 
-		mockMvc.perform(put("/api/v1/accounts/5")
+		mockMvc.perform(put("/api/accounts/5")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(updateDTO)))
 				.andExpect(status().isOk())
@@ -169,12 +169,12 @@ class AccountControllerTest {
 	}
 
 	@Test
-	@DisplayName("DELETE: /api/v1/accounts/{id} - Return 204 No Content")
+	@DisplayName("DELETE: /api/accounts/{id} - Return 204 No Content")
 	void testDeleteAccount_Success() throws Exception {
 		long accountId = 123L;
 		doNothing().when(accountService).deleteAccount(accountId);
 
-		mockMvc.perform(delete("/api/v1/accounts/{id}", accountId))
+		mockMvc.perform(delete("/api/accounts/{id}", accountId))
 				.andExpect(status().isNoContent());
 
 		verify(accountService, times(1)).deleteAccount(accountId);

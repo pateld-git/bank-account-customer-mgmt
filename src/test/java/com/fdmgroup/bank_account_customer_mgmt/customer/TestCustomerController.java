@@ -70,16 +70,16 @@ class TestCustomerController {
 	}
 
 	@Test
-	@DisplayName("POST: /api/v1/customers - Handle polymorphism and return Created")
+	@DisplayName("POST: /api/customers - Handle polymorphism and return Created")
 	void createCustomer_Success() throws Exception {
 		when(geocoderService.getPostalCodeProvinceFromGeocoder(any(CustomerDTO.class))).thenReturn(sampleDTO);
 		when(customerService.addCustomer(any(CustomerDTO.class))).thenReturn(person);
 
-		mockMvc.perform(post("/api/v1/customers")
+		mockMvc.perform(post("/api/customers")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(sampleDTO)))
 				.andExpect(status().isCreated())
-				.andExpect(header().string("Location", "http://localhost/api/v1/customers/1"))
+				.andExpect(header().string("Location", "http://localhost/api/customers/1"))
 				.andExpect(jsonPath("$.type").value("person"))
 				.andExpect(jsonPath("$.name").value("John Doe"));
 
@@ -88,11 +88,11 @@ class TestCustomerController {
 	}
 
 	@Test
-	@DisplayName("PUT: /api/v1/customers/{id} - Update and return OK")
+	@DisplayName("PUT: /api/customers/{id} - Update and return OK")
 	void updateCustomer_Success() throws Exception {
 		when(customerService.updateById(eq(1L), any(CustomerDTO.class))).thenReturn(person);
 
-		mockMvc.perform(put("/api/v1/customers/1")
+		mockMvc.perform(put("/api/customers/1")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(sampleDTO)))
 				.andExpect(status().isOk())
@@ -103,11 +103,11 @@ class TestCustomerController {
 	}
 
 	@Test
-	@DisplayName("GET: /api/v1/customers/{id} - Return specific customer")
+	@DisplayName("GET: /api/customers/{id} - Return specific customer")
 	void getCustomerById_Success() throws Exception {
 		when(customerService.getCustomerById(1L)).thenReturn(person);
 
-		mockMvc.perform(get("/api/v1/customers/1"))
+		mockMvc.perform(get("/api/customers/1"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.name").value("John Doe"))
 				.andExpect(jsonPath("$.type").value("person"));
@@ -117,16 +117,16 @@ class TestCustomerController {
 	}
 
 	@Test
-	@DisplayName("DELETE: /api/v1/customers/{id} - Return No Content")
+	@DisplayName("DELETE: /api/customers/{id} - Return No Content")
 	void deleteCustomer_Success() throws Exception {
-		mockMvc.perform(delete("/api/v1/customers/1"))
+		mockMvc.perform(delete("/api/customers/1"))
 				.andExpect(status().isNoContent());
 
 		verify(customerService).deleteById(1L);
 	}
 
 	@Test
-	@DisplayName("GET: /api/v1/customers - Return list of various customer types")
+	@DisplayName("GET: /api/customers - Return list of various customer types")
 	void testGetAllCustomers_Success() throws Exception {
 
 		Customer company = Company.builder()
@@ -138,7 +138,7 @@ class TestCustomerController {
 
 		when(customerService.getAllCustomers()).thenReturn(allCustomers);
 
-		mockMvc.perform(get("/api/v1/customers")
+		mockMvc.perform(get("/api/customers")
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.size()").value(2))
@@ -157,7 +157,7 @@ class TestCustomerController {
 	void testGetAllCustomers_Empty() throws Exception {
 		when(customerService.getAllCustomers()).thenReturn(new ArrayList<>());
 
-		mockMvc.perform(get("/api/v1/customers"))
+		mockMvc.perform(get("/api/customers"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.size()").value(0))
 				.andExpect(content().json("[]"));
