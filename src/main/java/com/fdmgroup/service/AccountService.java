@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import com.fdmgroup.exception.ArgNotFoundException;
-import com.fdmgroup.model.Account.Account;
-import com.fdmgroup.model.Account.AccountDTO;
-import com.fdmgroup.model.Account.CheckingAccount;
-import com.fdmgroup.model.Account.SavingsAccount;
+import com.fdmgroup.model.account.Account;
+import com.fdmgroup.model.account.AccountDTO;
+import com.fdmgroup.model.account.CheckingAccount;
+import com.fdmgroup.model.account.SavingsAccount;
 import com.fdmgroup.model.customer.Customer;
 import com.fdmgroup.repo.AccountRepository;
 import com.fdmgroup.repo.CustomerRepository;

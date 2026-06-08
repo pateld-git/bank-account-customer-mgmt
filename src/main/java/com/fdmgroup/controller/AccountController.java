@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fdmgroup.model.Account.Account;
-import com.fdmgroup.model.Account.AccountDTO;
+import com.fdmgroup.model.account.Account;
+import com.fdmgroup.model.account.AccountDTO;
 import com.fdmgroup.service.AccountService;
 
 import io.swagger.v3.oas.annotations.Operation;

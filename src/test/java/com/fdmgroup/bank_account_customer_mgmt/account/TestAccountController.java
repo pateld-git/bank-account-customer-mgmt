@@ -29,10 +29,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fdmgroup.controller.AccountController;
-import com.fdmgroup.model.Account.Account;
-import com.fdmgroup.model.Account.AccountDTO;
-import com.fdmgroup.model.Account.CheckingAccount;
-import com.fdmgroup.model.Account.SavingsAccount;
+import com.fdmgroup.model.account.Account;
+import com.fdmgroup.model.account.AccountDTO;
+import com.fdmgroup.model.account.CheckingAccount;
+import com.fdmgroup.model.account.SavingsAccount;
 import com.fdmgroup.service.AccountService;
 
 @ExtendWith(MockitoExtension.class)

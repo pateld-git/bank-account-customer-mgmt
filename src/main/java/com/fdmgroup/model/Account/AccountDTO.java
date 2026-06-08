@@ -1,4 +1,4 @@
-package com.fdmgroup.model.Account;
+package com.fdmgroup.model.account;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
