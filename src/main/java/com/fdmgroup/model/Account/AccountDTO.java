@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AccountDTO {
 	@NotBlank(message = "Type is required")
-	@Schema(description = "The category of customer determining the underlying record type.", example = "person", allowableValues = {
+	@Schema(description = "The category of account determining the underlying record type.", example = "savings", allowableValues = {
 			"savings", "checking" })
 	private String type;
 
