@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "bank-account-customer-mgmt-collection-id",
+		"name": "Bank Account Customer Management API",
+		"description": "Postman Collection for testing the Spring Boot bank-account-customer-mgmt application endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Customer (Person)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201 Created\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has customerId and type is person\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.customerId).to.be.a('number');",
+							"    pm.expect(jsonData.type).to.eql('person');",
+							"    pm.expect(jsonData.address.city).to.not.be.undefined;",
+							"    pm.expect(jsonData.address.province).to.not.be.undefined;",
+							"    // Save the created customer ID for subsequent requests",
+							"    pm.collectionVariables.set(\"customer_id\", jsonData.customerId);",
+							"    console.log(\"Saved customer_id variable: \" + jsonData.customerId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"person\",\n  \"name\": \"Jane Doe\",\n  \"address\": {\n    \"streetNumber\": \"456 Queen St W\",\n    \"postalCode\": \"M5V2H1\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers"
+					]
+				},
+				"description": "Creates a new Customer of type Person. The Geocoder service will automatically resolve the postal code M5V2H1 to Toronto, ON."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer (Company)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201 Created\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has customerId and type is company\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.customerId).to.be.a('number');",
+							"    pm.expect(jsonData.type).to.eql('company');",
+							"    pm.expect(jsonData.address.city).to.not.be.undefined;",
+							"    pm.expect(jsonData.address.province).to.not.be.undefined;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"company\",\n  \"name\": \"Acme Corporation\",\n  \"address\": {\n    \"streetNumber\": \"789 Bay St\",\n    \"postalCode\": \"M5G2C2\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers"
+					]
+				},
+				"description": "Creates a new Customer of type Company. The Geocoder service will automatically resolve the postal code M5G2C2 to Toronto, ON."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 OK\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers"
+					]
+				},
+				"description": "Retrieves the list of all customers."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 OK\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response customerId matches requested ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var expectedId = parseInt(pm.collectionVariables.get(\"customer_id\"));",
+							"    pm.expect(jsonData.customerId).to.eql(expectedId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/customers/{{customer_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers",
+						"{{customer_id}}"
+					]
+				},
+				"description": "Retrieves details of the customer created in the first step using the saved customer_id variable."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 OK\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Name was updated successfully\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"Jane Smith\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"type\": \"person\",\n  \"name\": \"Jane Smith\",\n  \"address\": {\n    \"streetNumber\": \"456 Queen St W\",\n    \"postalCode\": \"M5V2H1\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customers/{{customer_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers",
+						"{{customer_id}}"
+					]
+				},
+				"description": "Updates details of the customer created in the first step."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204 No Content\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/customers/{{customer_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers",
+						"{{customer_id}}"
+					]
+				},
+				"description": "Deletes the customer created in the first step."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "customer_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
