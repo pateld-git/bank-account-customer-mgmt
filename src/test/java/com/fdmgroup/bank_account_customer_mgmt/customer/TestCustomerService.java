@@ -19,7 +19,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.fdmgroup.exception.ArgNotFoundException;
-import com.fdmgroup.model.customer.Address;
+import com.fdmgroup.model.address.Address;
 import com.fdmgroup.model.customer.Company;
 import com.fdmgroup.model.customer.Customer;
 import com.fdmgroup.model.customer.CustomerDTO;

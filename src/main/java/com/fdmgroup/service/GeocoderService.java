@@ -6,9 +6,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.fdmgroup.exception.ArgNotFoundException;
 import com.fdmgroup.exception.GeocoderException;
-import com.fdmgroup.model.customer.Address;
+import com.fdmgroup.model.address.Address;
 import com.fdmgroup.model.customer.CustomerDTO;
-import com.fdmgroup.model.customer.GeocoderResponse;
+import com.fdmgroup.model.geocodeResponse.GeocoderResponse;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,7 @@
-package com.fdmgroup.model.customer;
+package com.fdmgroup.model.address;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fdmgroup.model.customer.Customer;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
@@ -32,14 +33,10 @@ public class Address {
 	@Schema(example = "123", description = "Street number of the location")
 	private String streetNumber;
 
-	@Schema(description = "City name - Automatically populated from postal code",
-			accessMode = Schema.AccessMode.READ_ONLY,
-			example = "Toronto")
+	@Schema(description = "City name - Automatically populated from postal code", accessMode = Schema.AccessMode.READ_ONLY, example = "Toronto")
 	private String city;
 
-	@Schema(description = "Province code - Automatically populated from postal code",
-			accessMode = Schema.AccessMode.READ_ONLY,
-			example = "ON")
+	@Schema(description = "Province code - Automatically populated from postal code", accessMode = Schema.AccessMode.READ_ONLY, example = "ON")
 	private String province;
 
 	@NotBlank(message = "Postal Code is required")
