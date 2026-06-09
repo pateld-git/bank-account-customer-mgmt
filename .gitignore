@@ -36,3 +36,4 @@ AGENTS.md
 ### VS Code ###
 .vscode/
 /myapp.log
+/myapp.log.*.0.gz
